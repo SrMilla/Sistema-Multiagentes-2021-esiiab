@@ -16,3 +16,6 @@
 - Equipo 5 -> Lista de tiendas | Tienda PHP 
 - Equipo 6 -> Lista productos | Comprador JS
 - Equipo 7 -> C# Tienda 
+## Buen uso del git
+- Proyectos individuales (Tienda):Cada equipo se tendra que crear una rama (y de esta puede crear más) el nombre tendra que sera "Equipo n Lenguaje Comprador|Monitor|Tienda" 
+- Funcionalidades: Cada uno tiene su rama asiganda,de la cual se pueden hacer más.Por otro lado seria mas comodo si fuerais poniendo que es lo que se esta haciendo ,que esta por hacer y que esta ya terminado
