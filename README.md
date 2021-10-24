@@ -9,11 +9,10 @@
 -	Solicitud de salida de tienda
 -	Notificación de fin objetivos
 ## Equipos
-- Equipo 1 -> Lista de tiendas | Tienda PHP 
+- Equipo 1 y 5 -> Lista de tiendas | Tienda PHP 
 - Equipo 2 -> Final objetivo Mensaje ERROR |Comprador PHP
 - Equipo 3 -> P.de alta y ack | Monitor PHP
 - Equipo 4 -> Inicio actividad | Comprador PHP
-- Equipo 5 -> Lista de tiendas | Tienda PHP 
 - Equipo 6 -> Lista productos | Comprador JS
 - Equipo 7 -> C# Tienda 
 ## Buen uso del git
