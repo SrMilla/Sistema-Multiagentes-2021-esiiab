@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://www.w3schools.com"
+    xmlns="https://www.w3schools.com"
+    elementFormDefault="qualified"
+    xmlns:im="otro grupo"
+    xmlns:t="tiendas.xsd">
+
+    <xs:element name="mensaje">
+        <xs:sequence>
+            <xs:element name="emisor" type="im:emisor"/>
+            <xs:element name="receptor" type="im:receptor"/>
+            <xs:element name="tipo" type="im:tipo" fixed="MIT" />
+            <xs:element name="datos" type="tipoDatos" />
+        </xs:sequence>
+    </xs:element>
+
+    <xs:complexType name="tipoDatos">
+        <xs:sequence>
+            <xs:element name="tiendas" type="t:tipoTiendas"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
