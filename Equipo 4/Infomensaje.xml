@@ -41,6 +41,8 @@
             <xs:enumeration value="MIT" type="tipoMIT"/>
             <xs:enumeration value="MSST" type="tipoMSST"/>
             <xs:enumeration value="MFO" type="tipoMFO"/>
+			<xs:enumeration value="Error" type="tipoError"/>
+			<xs:enumeration value="ACK" type="tipoACK"/>
     </xs:complexType>
 
 
