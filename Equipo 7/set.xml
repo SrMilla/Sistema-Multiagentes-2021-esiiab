@@ -1,0 +1,20 @@
+<xml version="1.0" encoding="UTF-8">
+    <Sol_Entrada_Tienda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Sol_Entrada_Tienda.xsd">
+        <emisor>
+            <IP>192.0.2.3</IP>
+            <ID>10</ID>
+            <tipo>Comprador</tipo>
+        </emisor>
+
+        <receptor>
+            <IP>192.0.2.10</IP>
+            <ID>4</ID>
+            <tipo>Tienda</tipo>
+        </receptor>
+    
+        <info_msg>
+            <tipo_mensaje>set</tipo_mensaje>
+            <hora>17:00</hora>
+        </info_msg>
+    </Sol_Entrada_Tienda>
+</xml>
