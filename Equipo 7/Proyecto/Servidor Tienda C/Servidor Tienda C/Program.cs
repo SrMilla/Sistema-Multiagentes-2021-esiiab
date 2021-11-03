@@ -19,7 +19,8 @@ namespace Servidor_Tienda_C
                 //Console.WriteLine("pepe");
                if(VGlobal.MensajesBuffer.Count != 0)
                 {
-                    Console.WriteLine("Hay peticiones de clientes");
+                    Console.Write("Se empieza tratamiento de mensaje");
+                    tratamiento();
                 }
                
             }
@@ -27,6 +28,9 @@ namespace Servidor_Tienda_C
         public static void tratamiento()
         {
             VGlobal.MensajeActual=VGlobal.MensajesBuffer[0];
+            VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
+            /*Tratamiento de datos*/
+            tcp.broadcast(VGlobal.Mensaje_tratado.tipo, VGlobal.MensajeActual.Endpoint_Cliente);
             VGlobal.MensajesBuffer.RemoveAt(0);
 
         }
@@ -46,12 +50,12 @@ namespace Servidor_Tienda_C
             Console.WriteLine("Hello World!");
             Thread C_buffer = new Thread(new ThreadStart(comprobar_buffer));
             Thread HServidor = new Thread(new ThreadStart(HiloServidor));
-            Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
+            //Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
             // C_buffer.Start();
             //HServidor.Start();
             //Pruebas.Start();
-            var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
-
+            //var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
+            Base_de_datos.Creacion_BBDD();
         }
     }
 }

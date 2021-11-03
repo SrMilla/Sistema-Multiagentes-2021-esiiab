@@ -31,7 +31,8 @@ namespace Servidor_Tienda_C
                 count++;
             }
         }
-        public static void handle_clients(object o)
+
+            public static void handle_clients(object o)
         {
             int id = (int)o;
             TcpClient client;
@@ -54,7 +55,7 @@ namespace Servidor_Tienda_C
                 string data = Encoding.ASCII.GetString(buffer, 0, byte_count);
                 // VGlobal.MensajesBuffer.Append(x, data));
                 VGlobal.añadirBuffer(x, data);
-                broadcast(data, x);
+                //broadcast(data, x);
                 //Console.WriteLine(cl);
                 Console.WriteLine("Se ha recibido el dato:" + data + "id:" + id);
                 
@@ -66,7 +67,7 @@ namespace Servidor_Tienda_C
         }
         public static void broadcast(string data, System.Net.EndPoint mensajero)
         {
-            byte[] buffer = Encoding.ASCII.GetBytes("Recibimos" + data + Environment.NewLine);
+            byte[] buffer = Encoding.ASCII.GetBytes("Recibimos: " + data + Environment.NewLine);
 
             lock (_lock)
             {
@@ -77,7 +78,7 @@ namespace Servidor_Tienda_C
                     {
 
 
-
+                        //se da respuesta al cliente
                         stream.Write(buffer, 0, buffer.Length);
                         Console.WriteLine("Mensaje enviado a " + c.Client.RemoteEndPoint.ToString());
                     }

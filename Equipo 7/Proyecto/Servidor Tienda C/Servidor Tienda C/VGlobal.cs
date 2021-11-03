@@ -12,6 +12,7 @@ namespace Servidor_Tienda_C
     {
         public static List<Mensajes> MensajesBuffer = new List<Mensajes>();
         public static Mensajes MensajeActual { get; set; }
+        public static Xml_Object Mensaje_tratado { get; set; }
         public static void añadirBuffer(EndPoint endpoint_Cliente, string mensaje)
         {
             var aux2 = VGlobal.mensaje_prueba;
