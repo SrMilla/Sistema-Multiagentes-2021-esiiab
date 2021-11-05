@@ -82,8 +82,20 @@ namespace Servidor_Tienda_C
                         stream.Write(buffer, 0, buffer.Length);
                         Console.WriteLine("Mensaje enviado a " + c.Client.RemoteEndPoint.ToString());
                     }
+                    //stream.Write(buffer, 0, buffer.Length);
+                    //Console.WriteLine("Mensaje enviado a " + c.Client.RemoteEndPoint.ToString());
+                }
+            }
+        }
+        public static void enviar_a_todos(string data)
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes("Recibimos: " + data + Environment.NewLine);
 
-
+            lock (_lock)
+            {
+                foreach (TcpClient c in list_clients.Values)
+                {
+                    NetworkStream stream = c.GetStream();
                     stream.Write(buffer, 0, buffer.Length);
                     Console.WriteLine("Mensaje enviado a " + c.Client.RemoteEndPoint.ToString());
                 }

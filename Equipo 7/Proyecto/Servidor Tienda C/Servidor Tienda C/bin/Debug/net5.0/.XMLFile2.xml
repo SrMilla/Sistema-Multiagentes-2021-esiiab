@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Lista_de_compra>
+  <info_mensaje>
+    <emisor>
+      <IP>IP_EMISOR</IP>
+      <Id>Id_EMISOR</Id>
+      <tipo>tipo_emisor</tipo>
+    </emisor>
+    <receptor>
+      <IP>1</IP>
+      <Id>1</Id>
+      <tipo>tipo_emisor</tipo>
+    </receptor>
+  </info_mensaje>
+  <Lista_de_la_compra>
+    <producto>
+      <nombre_producto>Perro</nombre_producto>
+      <cantidad_producto>4</cantidad_producto>
+      <precio_producto>precio</precio_producto>
+    </producto>
+    <producto>
+      <nombre_producto>Gato</nombre_producto>
+      <cantidad_producto>2</cantidad_producto>
+      <precio_producto>precio</precio_producto>
+    </producto>
+    <producto>
+      <nombre_producto>Gazpacho</nombre_producto>
+      <cantidad_producto>2</cantidad_producto>
+      <precio_producto>precio</precio_producto>
+    </producto>
+  </Lista_de_la_compra>
+</Lista_de_compra>
