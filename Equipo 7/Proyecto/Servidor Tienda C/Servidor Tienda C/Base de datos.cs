@@ -9,6 +9,11 @@ namespace Servidor_Tienda_C
     public static class Base_de_datos
     {
         public static List<Producto> productos = new List<Producto>();
+        /// <summary>
+        /// Sirve para añadir cantidades de un producto,si ya exite en la base de datos se incrementa su cantidad
+        /// </summary>
+        /// <param name="name">Nombre del producto que se va añadir</param>
+        /// <param name="cantidad">Cantidad del producto que se va añadir</param>
         public static void añadir_bbdd(string name,int cantidad)
         {
             Producto aux = new(name, cantidad);
@@ -31,6 +36,12 @@ namespace Servidor_Tienda_C
                 productos.Add(aux);
             }
         }
+        /// <summary>
+        /// Quita n cantidades de un productos
+        /// </summary>
+        /// <param name="name">Nombre del producto que se quiere retirar</param>
+        /// <param name="cantidad">Cantidad de productos que se quieren retirar </param>
+        /// <returns>Devuelve si se puede quitar esos valores es decir que dice por ejemplo si se quiere quitar 3 platanos y solo hay dpos te dice que no</returns>
         public static bool quitar_bbdd(string name,int cantidad)
         {
             Producto aux = new(name, cantidad);

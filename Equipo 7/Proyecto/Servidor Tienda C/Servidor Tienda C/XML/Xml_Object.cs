@@ -74,10 +74,10 @@ namespace Servidor_Tienda_C
             this.receptor_tipo = info_receptor["tipo"].InnerText;
             Console.Write("Receptor_tipo:" + this.receptor_tipo + "\n");
 
-            this.protocolo = doc.SelectNodes("/ack/info_mensaje/protocolo")[0].InnerText;
+            this.protocolo = doc.SelectNodes("/"+tipo+"/info_mensaje/protocolo")[0].InnerText;
             Console.Write("Protocolo:" + this.protocolo);
             
-            this.tipo = doc.SelectNodes("/ack/info_mensaje/tipo")[0].InnerText;
+            this.tipo = doc.SelectNodes("/"+tipo+"/info_mensaje/tipo")[0].InnerText;
             Console.Write("Tipo:" + this.tipo);
 
             // XmlNodeList elemList = doc.GetElementsByTagName("info_mensaje");
