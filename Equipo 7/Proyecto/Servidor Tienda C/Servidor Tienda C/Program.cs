@@ -28,9 +28,9 @@ namespace Servidor_Tienda_C
         public static void tratamiento()
         {
             VGlobal.MensajeActual=VGlobal.MensajesBuffer[0];
-            //VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
+            VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
             /*Tratamiento de datos*/
-            tcp.broadcast(VGlobal.Mensaje_tratado.tipo, VGlobal.MensajeActual.Endpoint_Cliente);
+            //tcp.broadcast(VGlobal.Mensaje_tratado.tipo, VGlobal.MensajeActual.Endpoint_Cliente);
             VGlobal.MensajesBuffer.RemoveAt(0);
 
         }
@@ -39,7 +39,7 @@ namespace Servidor_Tienda_C
             System.Net.EndPoint x = (EndPoint)new IPEndPoint(IPAddress.Any, 0);
             string mensaje = "WILLEM DAFOE";
             VGlobal.añadirBuffer(x, VGlobal.mensaje_prueba.ToString());
-            //tratamiento();
+            tratamiento();
             //VGlobal.añadirBuffer(x, mensaje);
 
             Console.WriteLine("Inicia la prueba");
@@ -50,15 +50,15 @@ namespace Servidor_Tienda_C
             Console.WriteLine("Hello World!");
             Thread C_buffer = new Thread(new ThreadStart(comprobar_buffer));
             Thread HServidor = new Thread(new ThreadStart(HiloServidor));
-            //Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
+            Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
             // C_buffer.Start();
             //HServidor.Start();
-            //Pruebas.Start();
+            Pruebas.Start();
             //var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
             Base_de_datos.Creacion_BBDD();
-            string t = "1";
+            /*string t = "1";
             var aux = new XML_lista_compra(t,t,t,t,t,t,t,"Lista_de_compra");
-            aux.generar_xml();
+            aux.generar_xml();*/
         }
     }
 }

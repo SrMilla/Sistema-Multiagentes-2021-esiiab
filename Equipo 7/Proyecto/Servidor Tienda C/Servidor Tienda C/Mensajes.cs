@@ -17,6 +17,8 @@ namespace Servidor_Tienda_C
 
         public System.Net.EndPoint Endpoint_Cliente { get; set; }
         public string mensaje { get; set; }
+        public string respuesta { get; set; }
+
 
         
     }

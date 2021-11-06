@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,11 +37,24 @@ namespace Servidor_Tienda_C
         {
             XmlDocument doc = new XmlDocument();
            // XmlDocument doc2 = new XmlDocument();
-            var aux=doc.GetElementsByTagName("info_mensaje")[0];
+            //var aux=doc.GetElementsByTagName("info_mensaje")[0];
            
             doc.LoadXml(mensaje);
             this.doc = doc;
-            var info_emisor = doc.SelectNodes("/ack/info_mensaje/emisor")[0];
+            List<string> posibles_tipos = new List<string>();
+            posibles_tipos.Add("ack");
+            posibles_tipos.Add("lista_compra");
+            string tipo = "";
+            foreach(string i in posibles_tipos)
+            {
+                var aux = doc.SelectNodes("/"+i)[0];
+                if (aux != null){
+                    tipo = i;
+                }
+            }
+            //var aux = doc.SelectNodes("/ack")[0];
+
+            var info_emisor = doc.SelectNodes("/"+tipo+"/info_mensaje/emisor")[0];
             this.emisor_ip = info_emisor["IP"].InnerText;
             Console.Write("Emisor_Ip:" + this.emisor_ip + "\n");
 
@@ -50,7 +64,7 @@ namespace Servidor_Tienda_C
             this.emisor_tipo = info_emisor["tipo"].InnerText;
             Console.Write("Emisor_tipo:" + this.emisor_tipo + "\n");
 
-            var info_receptor = doc.SelectNodes("/ack/info_mensaje/receptor")[0];
+            var info_receptor = doc.SelectNodes("/"+tipo+"/info_mensaje/receptor")[0];
             this.receptor_ip = info_receptor["IP"].InnerText;
             Console.Write("Receptor_Ip:" + this.receptor_ip+"\n");
 
@@ -82,7 +96,10 @@ namespace Servidor_Tienda_C
             // Console.WriteLine("e");
         }
 
-        
+        public string xml_to_string()
+        {
+            return doc.OuterXml;
+        }
         public XmlDocument crear_xml()
         {
         this.doc = new XmlDocument();
