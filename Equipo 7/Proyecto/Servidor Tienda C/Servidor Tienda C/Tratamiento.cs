@@ -16,5 +16,14 @@ namespace Servidor_Tienda_C
             var aux = mensaje_xml.xml_to_string();
             tcp.broadcast(aux, VGlobal.MensajeActual.Endpoint_Cliente);
         }
+        public static void tratamiento_ack()
+        {
+
+        }
+        public static void tratamiento_error()
+        {
+
+        }
+
     }
 }

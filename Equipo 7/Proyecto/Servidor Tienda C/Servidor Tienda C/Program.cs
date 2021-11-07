@@ -20,16 +20,48 @@ namespace Servidor_Tienda_C
                if(VGlobal.MensajesBuffer.Count != 0)
                 {
                     Console.Write("Se empieza tratamiento de mensaje");
-                    //tratamiento();
+                    Thread hilo_tratamiento = new Thread(new ThreadStart(tratamiento));
+                    hilo_tratamiento.Start();
                 }
                
             }
         }
+        /// <summary>
+        /// Esta funcion lo que hace es buscar el primer mensaje que no se haya tratado
+        /// </summary>
         public static void tratamiento()
         {
-            VGlobal.MensajeActual=VGlobal.MensajesBuffer[0];
-            VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
+            bool epicardo = false;
+            int inde = 0;
+            var mensaje = new Mensajes();
+            while (VGlobal.semaforo_buffer)
+            {
+                Console.WriteLine("Esperando a que nadie opere con el buffer");
+            }
+            VGlobal.semaforo_buffer = true;
+            while (!epicardo)
+            {
+                if (!VGlobal.MensajesBuffer[inde].tratado)
+                {
+                    epicardo = true;
+                    VGlobal.MensajesBuffer[inde].tratado = true;
+                    mensaje = VGlobal.MensajesBuffer[inde];
+                }
+                else
+                {
+                    inde = +1;
+                }
+            }
+            VGlobal.semaforo_buffer = false;
+
+
+            //VGlobal.MensajeActual=VGlobal.MensajesBuffer[0];
+            //VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
             /*Tratamiento de datos*/
+            if (VGlobal.Mensaje_tratado.tipo == "lista_productos")
+            {
+                
+            }
             //tcp.broadcast(VGlobal.Mensaje_tratado.tipo, VGlobal.MensajeActual.Endpoint_Cliente);
             VGlobal.MensajesBuffer.RemoveAt(0);
 
