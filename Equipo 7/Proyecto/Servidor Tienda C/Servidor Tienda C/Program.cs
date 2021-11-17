@@ -41,7 +41,7 @@ namespace Servidor_Tienda_C
             VGlobal.semaforo_buffer = true;
             while (!epicardo)
             {
-                if (!VGlobal.MensajesBuffer[inde].tratado)
+                if (!VGlobal.MensajesBuffer[inde-1].tratado)
                 {
                     epicardo = true;
                     VGlobal.MensajesBuffer[inde].tratado = true;
@@ -58,10 +58,10 @@ namespace Servidor_Tienda_C
             //VGlobal.MensajeActual=VGlobal.MensajesBuffer[0];
             //VGlobal.Mensaje_tratado = new Xml_Object(VGlobal.MensajeActual.mensaje);//Guardamos el mensaje como mensaje objeto XML
             /*Tratamiento de datos*/
-            if (VGlobal.Mensaje_tratado.tipo == "lista_productos")
+           /* if (VGlobal.Mensaje_tratado.tipo == "lista_productos")
             {
                 
-            }
+            }*/
             //tcp.broadcast(VGlobal.Mensaje_tratado.tipo, VGlobal.MensajeActual.Endpoint_Cliente);
             VGlobal.MensajesBuffer.RemoveAt(0);
 
@@ -83,9 +83,9 @@ namespace Servidor_Tienda_C
             Thread C_buffer = new Thread(new ThreadStart(comprobar_buffer));
             Thread HServidor = new Thread(new ThreadStart(HiloServidor));
             Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
-            // C_buffer.Start();
-            //HServidor.Start();
-            Pruebas.Start();
+            C_buffer.Start();
+            HServidor.Start();
+            //Pruebas.Start();
             //var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
             Base_de_datos.Creacion_BBDD();
             /*string t = "1";
