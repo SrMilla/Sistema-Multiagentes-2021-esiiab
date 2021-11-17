@@ -9,7 +9,7 @@
             <xs:element name="receptor" type="IdAgente"/> 
             <xs:element name="id" type="ID"/> 
             <xs:element name="protocolo" type="Protocolo"/> 
-            <xs:element name="tipo" type="TipoMensaje"/> 
+            <xs:element name="tipoMen" type="TipoMensaje"/> 
         </xs:sequence> 
     </xs:complexType>
 
