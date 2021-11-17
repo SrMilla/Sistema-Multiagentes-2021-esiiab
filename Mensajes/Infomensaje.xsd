@@ -3,17 +3,13 @@
            targetNamespace="https://www.w3schools.com"
            xmlns="https://www.w3schools.com"> 
 
-<xs:include schemaLocation="msi.xsd"/>
-<xs:include schemaLocation="mci.xsd"/>
-<xs:include schemaLocation="ack.xsd"/>
-
     <xs:complexType name="infoMensaje">
         <xs:sequence> 
             <xs:element name="emisor" type="IdAgente"/> 
             <xs:element name="receptor" type="IdAgente"/> 
             <xs:element name="id" type="ID"/> 
             <xs:element name="protocolo" type="Protocolo"/> 
-            <xs:element name="tipo" type="TipoMensaje"/> 
+            <xs:element name="tipoMen" type="TipoMensaje"/> 
         </xs:sequence> 
     </xs:complexType>
 
@@ -31,21 +27,25 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:complexType name="TipoMensaje">
-            <xs:enumeration value="MSI" type="msi"/>
-            <xs:enumeration value="MCI" type="mci"/>
-            <xs:enumeration value="MEI" type="tipoMEI"/>
-            <xs:enumeration value="MAE" type="tipoMAE"/>
-            <xs:enumeration value="MSET" type="tipoMSET"/>
-            <xs:enumeration value="MSIP" type="tipoMSIP"/>
-            <xs:enumeration value="MIP" type="tipoMIP"/>
-            <xs:enumeration value="MCP" type="tipoMCP"/>
-            <xs:enumeration value="MVP" type="tipoMVP"/>
-            <xs:enumeration value="MSIT" type="tipoMSIT"/>
-            <xs:enumeration value="MIT" type="tipoMIT"/>
-            <xs:enumeration value="MSST" type="tipoMSST"/>
-            <xs:enumeration value="MFO" type="tipoMFO"/>
-    </xs:complexType>
+    <xs:simpleType name="TipoMensaje">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MSI"/>
+            <xs:enumeration value="MCI"/>
+            <xs:enumeration value="MEI"/>
+            <xs:enumeration value="MAE"/>
+            <xs:enumeration value="MSET"/>
+            <xs:enumeration value="MSIP"/>
+            <xs:enumeration value="MIP"/>
+            <xs:enumeration value="MCP"/>
+            <xs:enumeration value="MVP"/>
+            <xs:enumeration value="MSIT"/>
+            <xs:enumeration value="MIT"/>
+            <xs:enumeration value="MSST"/>
+            <xs:enumeration value="MFO"/>
+            <xs:enumeration value="ACK"/>
+            <xs:enumeration value="Eror"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 
     <xs:simpleType name="tipoIP">
@@ -54,20 +54,18 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-    <!-- Nombre ID mensaje -->
-
     <xs:complexType name="ID">
         <xs:sequence>
-            <xs:element name="ipemisor" type="tipoIP"/>
-            <xs:element name="contador" type="xs:integer"/>
+            <xs:element name="ipemisor" type="tipoIP"></xs:element>
+            <xs:element name="contador" type="xs:integer"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="IdAgente">
         <xs:sequence>
-            <xs:element name="IP" type="tipoIP"/>
-            <xs:element name="ID" type="xs:integer"/>
-            <xs:element name="tipo" type="tipoAgente"/>
+            <xs:element name="IP" type="tipoIP"></xs:element>
+            <xs:element name="ID" type="xs:integer"></xs:element>
+            <xs:element name="tipo" type="tipoAgente"></xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -79,18 +77,17 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <!-- COMENTAR ERROR CARLOS Y DANI-->
+    <xs:complexType name="MCP">
+        <xs:sequence>
+			<xs:element name="lista_de_productos" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
 
-    <xs:simpleType name="tipoMCP">
-        <xs:seqquence base="xs:string">
-			<xs:element name="lista de productos"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-    <xs:simpleType name="tipoMVP">
-        <xs:seqquence base="xs:string">
-			<xs:element name="lista de productos"/>
-		</xs:restriction>
-	</xs:simpleType>
+    <xs:complexType name="MVP">
+        <xs:sequence>
+			<xs:element name="lista_de_productos" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
 
 </xs:schema>
+ 
