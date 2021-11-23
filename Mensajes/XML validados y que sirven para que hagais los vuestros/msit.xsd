@@ -5,7 +5,7 @@
 
     <xs:include schemaLocation="Infomensaje.xsd"/>
 
-    <xs:element name="msst">
+    <xs:element name="msit">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="infoMensaje" type="infoMensaje"/>

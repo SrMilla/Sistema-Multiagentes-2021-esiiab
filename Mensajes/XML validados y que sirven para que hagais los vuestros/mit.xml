@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<mit 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="mit.xsd">
+
+    <infoMensaje>
+        <emisor>
+            <IP>192.0.2.1</IP>
+            <ID>0</ID>
+            <tipo>comprador</tipo>
+        </emisor>
+        <receptor>
+            <IP>192.0.2.2</IP>
+            <ID>2</ID>
+            <tipo>tienda</tipo>
+        </receptor>
+        <id>
+            <ipemisor>192.0.2.1</ipemisor>
+            <contador>2</contador>
+        </id>
+        <protocolo>salida_tienda</protocolo>
+        <tipoMen>MIT</tipoMen>
+    </infoMensaje>
+
+    <lista_tiendas>
+        <tienda>
+            <ip>192.0.3.3</ip>
+            <id>15</id>
+        </tienda>
+        <tienda>
+            <ip>192.0.3.10</ip>
+            <id>9</id>
+        </tienda>
+    </lista_tiendas>
+</mit>

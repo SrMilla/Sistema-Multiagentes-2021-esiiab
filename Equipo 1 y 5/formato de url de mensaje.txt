@@ -1,0 +1,6 @@
+el mensaje se envía a ip:puerto y tiene un campo post de tipo post llamado xml (así todo en minusculas) al que se le asigna el xml
+
+es decir teneis que enviar un mensaje http a ip:puerto y en ese mensaje http asignar el contenido del archivo (un string) a la variable llamada xml
+TO -> ip:puerto
+POST -> xml=...
+
