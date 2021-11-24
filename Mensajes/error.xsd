@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="tiposBase.xsd" />
+
+    <!-- Mensaje de Error -->
+    <xs:element name="error">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="id" type="codigo"/>
+                <xs:element name="mensaje" type="mError"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="codigo">
+        <xs:restriction base="xs:integer">
+            <!--0 - Error no definido -->
+            <!--1 - Faltan Datos -->
+            <!--2 - Datos Erroneos -->
+            <!--3 - Error de conexion -->
+            <!--4 - Problema en la operacion -->
+            <!--5 - Cabecera Erronea -->
+            <xs:pattern value="[0-5]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="mError">
+        <xs:sequence>
+            <xs:element name="texto">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <!--<xs:pattern value="[a-zA-Z0-9 ]"/>-->
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="mensajeProv" type="infoMensaje"/>
+            <!-- Cabecera del mensaje que ha provocado el error -->
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

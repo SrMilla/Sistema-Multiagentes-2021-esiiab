@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- ¿Hacen falta los 3 atributos?-->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://www.w3schools.com"
-           xmlns="https://www.w3schools.com"> 
+    <xs:include schemaLocation="tiposBase.xsd" />
 
-<xs:include schemaLocation="Infomensaje.xsd"/>
-
-<xs:complexType name="ack">
-<xs:sequence>
-  <xs:element name="infoMensaje" type="infoMensaje"/>
-  <xs:element name="tipo_mensaje" type="xs:integer"/>
-  <xs:element name="id_mensaje" type="ID"/>
-</xs:sequence>
-</xs:complexType>
-
+    <!-- ACK -->
+    <xs:element name="ack">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="tipoMensajePregunta" type="tipoMensaje"/>
+                <!-- Tipo del mensaje al que responde -->
+                <xs:element name="idPregunta" type="idMensaje" />
+                <!-- Id del mensaje al que responde -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

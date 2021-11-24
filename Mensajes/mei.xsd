@@ -1,16 +1,14 @@
 <?xml version="1.0"?>
-
-<!-- Define la estructura del mensaje -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-    <xs:include schemaLocation="Infomensaje.xsd"/>
+    <xs:include schemaLocation="tiposBase.xsd" />
 
-    <xs:element name="msit">
+    <!-- Mensaje en Espera de Inicio -->
+    <xs:element name="mei">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="infoMensaje" type="infoMensaje"/>
+                <xs:element name="infoMensaje" type="infoMensaje" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
 </xs:schema>

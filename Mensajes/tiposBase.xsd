@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<!-- ______________________________________________________________________________________ -->
+<!-- INFO DE MENSAJE ______________________________________________________________________ -->
+<!-- ______________________________________________________________________________________ -->
+    <xs:complexType name="infoMensaje">
+        <xs:sequence> 
+            <xs:element name="emisor" type="idAgente"/> 
+            <xs:element name="receptor" type="idAgente"/> 
+            <xs:element name="id" type="idMensaje"/> 
+            <xs:element name="protocolo" type="protocolo"/> 
+            <xs:element name="tipo" type="tipoMensaje"/> 
+        </xs:sequence> 
+    </xs:complexType>
+
+<!-- ID AGENTE ____________________________________________________________________________ -->
+    <xs:complexType name="idAgente">
+        <xs:sequence>
+            <xs:element name="ip" type="ip"></xs:element>
+            <xs:element name="id" type="id"></xs:element>
+            <xs:element name="tipo" type="tipoAgente"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- TIPO AGENTE __________________________________________________________________________ -->
+    <xs:simpleType name="tipoAgente">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="monitor"/>
+            <xs:enumeration value="comprador"/>
+            <xs:enumeration value="tienda"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<!-- ID MENSAJE ___________________________________________________________________________ -->
+    <xs:complexType name="idMensaje">
+        <xs:sequence>
+            <xs:element name="ipEmisor" type="ip"></xs:element>
+            <xs:element name="contador" type="id"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- PROTOCOLO ____________________________________________________________________________ -->
+    <xs:simpleType name="protocolo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="alta"/>
+            <xs:enumeration value="inicioActividad"/>
+            <xs:enumeration value="entradaTienda"/>
+            <xs:enumeration value="compra"/>
+            <xs:enumeration value="solicitarTiendas"/>
+            <xs:enumeration value="salidaTienda"/>
+            <xs:enumeration value="finalizacion"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<!-- TIPO DE MENSAJE ______________________________________________________________________ -->
+    <xs:simpleType name="tipoMensaje">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MSI"/>   <!-- Mensaje de Solicitud de Inicio             -->
+            <xs:enumeration value="MCI"/>   <!-- Mensaje de Configuracion Inicial           -->
+            <xs:enumeration value="MEI"/>   <!-- Mensaje en Espera de Inicio                -->
+            <xs:enumeration value="MAE"/>   <!-- Mensaje de Arranca o Espera                -->
+            <xs:enumeration value="MSET"/>  <!-- Mensaje de Solicitud de Entrada en Tienda  -->
+            <xs:enumeration value="MSIP"/>  <!-- Mensaje de Solicitud de Info de Productos  -->
+            <xs:enumeration value="MIP"/>   <!-- Mensaje de Info de Productos               -->
+            <xs:enumeration value="MCP"/>   <!-- Mensaje de Compra de Productos             -->
+            <xs:enumeration value="MVP"/>   <!-- Mensaje de Venta de Productos              -->
+            <xs:enumeration value="MSIT"/>  <!-- Mensaje de Solicitud de Info Tiendas       -->
+            <xs:enumeration value="MIT"/>   <!-- Mensaje de Info de Tiendas                 -->
+            <xs:enumeration value="MSST"/>  <!-- Mensaje de Solicitud de Salida de Tienda   -->
+            <xs:enumeration value="MFO"/>   <!-- Mensaje de Fin de Objetivos                -->
+            <xs:enumeration value="ACK"/>   <!-- ACK                                        -->
+            <xs:enumeration value="ERROR"/> <!-- Mensaje de Error                           -->
+        </xs:restriction>
+    </xs:simpleType>
+
+<!-- ______________________________________________________________________________________ -->
+<!-- LISTA DE PRODUCTOS ___________________________________________________________________ -->
+<!-- ______________________________________________________________________________________ -->
+    <xs:complexType name="listaProductos">
+        <xs:sequence>
+            <xs:element name="producto" type="producto" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- PRODUCTO _____________________________________________________________________________ -->
+    <xs:complexType name="producto">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string" />
+            <xs:element name="id" type="id" />
+            <xs:element name="cantidad">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="precio" minOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ______________________________________________________________________________________ -->
+<!-- LISTA DE TIENDAS _____________________________________________________________________ -->
+<!-- ______________________________________________________________________________________ -->
+    <xs:complexType name="listaTiendas">
+        <xs:sequence>
+            <xs:element name="tienda" type="tienda" minOccurs="1" maxOccurs="2" />
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- TIENDA _______________________________________________________________________________ -->
+    <xs:complexType name="tienda">
+        <xs:sequence>
+            <xs:element name="ip" type="ip"/>
+            <xs:element name="id" type="id"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- IP ___________________________________________________________________________________ -->
+    <xs:simpleType name="ip">
+        <xs:restriction base="xs:string">
+			<xs:pattern value="([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+<!-- ID ___________________________________________________________________________________ -->
+    <xs:simpleType name="id">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="-1" /> <!-- El valor -1 indica que aún no se ha asignado una id -->
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

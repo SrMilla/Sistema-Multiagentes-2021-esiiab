@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<error
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="error.xsd">
+    <infoMensaje>
+        <emisor>
+            <ip>192.0.2.1</ip>
+            <id>7</id>
+            <tipo>tienda</tipo>
+        </emisor>
+        <receptor>
+            <ip>192.0.2.2</ip>
+            <id>8</id>
+            <tipo>comprador</tipo>
+        </receptor>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>0</contador>
+        </id>
+        <protocolo>salidaTienda</protocolo>
+        <tipo>ERROR</tipo>
+    </infoMensaje>
+    <id>1</id>
+    <mensaje>
+        <texto>Faltan datos en el mensaje</texto>
+        <mensajeProv>
+            <emisor>
+                <ip>192.168.0.2</ip>
+                <id>1</id>
+                <tipo>comprador</tipo>
+            </emisor>
+            <receptor>
+                <ip>192.168.0.1</ip>
+                <id>2</id>
+                <tipo>tienda</tipo>
+            </receptor>
+            <id>
+                <ipEmisor>192.168.0.2</ipEmisor>
+                <contador>1</contador>
+            </id>
+            <protocolo>compra</protocolo>
+            <tipo>MCP</tipo>
+        </mensajeProv>    
+    </mensaje>
+</error>

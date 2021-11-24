@@ -1,83 +1,14 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="mensaje_solictud_info_productos">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="tiposBase.xsd" />
+
+    <!-- Mensaje de Solicitud de Info de Productos -->
+    <xs:element name="msip">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="info_mensaje">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="emisor" maxOccurs="1">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="tipo_emisor" type="xs:string" />
-                                        <xs:element name="id_emisor" type="xs:integer" />
-                                        <xs:element name="ip_emisor">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:string">
-                                                    <xs:pattern value="([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])" />
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                        <xs:element name="puerto_emisor" type="xs:integer" />
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="receptor" maxOccurs="2">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="tipo_receptor" type="xs:string" />
-                                        <xs:element name="id_receptor" type="xs:integer" />
-                                        <xs:element name="ip_receptor">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:string">
-                                                    <xs:pattern value="([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])" />
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                        <xs:element name="puerto_receptor" type="xs:integer" />
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="datos_mensaje" maxOccurs="1">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="id_mensaje" type="xs:integer" />
-                                        <xs:element name="cuerpo" type="xs:string" />
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="tipo_mensaje" maxOccurs="1">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:pattern value="MSIP" />
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="lista_productos">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="producto" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="nombre_producto" type="xs:string" />
-                                        <xs:element name="id_producto" type="xs:integer" />
-                                        <xs:element name="cantidad" type="xs:integer" />
-                                        <xs:element name="precio">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:decimal">
-                                                    <xs:fractionDigits value="2" />
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="listaProductos" type="listaProductos" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

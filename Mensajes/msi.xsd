@@ -1,18 +1,14 @@
 <?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- ¿Hacen falta los 3 atributos?-->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://www.w3schools.com"
-           xmlns="https://www.w3schools.com"> 
+    <xs:include schemaLocation="tiposBase.xsd" />
 
-<xs:include schemaLocation="Infomensaje.xsd"/>
-
-<!-- Mensaje de Solicitud de Inicio-->
-<xs:complexType name="msi">
-<xs:sequence>
-  <xs:element name="infoMensaje" type="infoMensaje"/>
-  <!-- <xs:element name="es_tienda" type="xs:boolean"/> --> <!-- Ya no hace falta, va en infoMensaje-->
-</xs:sequence>
-</xs:complexType>
-
+    <!-- Mensaje de Solicitud de Inicio-->
+    <xs:element name="msi">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

@@ -3,12 +3,11 @@
 
     <xs:include schemaLocation="tiposBase.xsd" />
 
-    <!-- Mensaje de Compra de Productos -->
-    <xs:element name="mcp">
+    <!-- Mensaje de Fin de Objetivos -->
+    <xs:element name="mfo">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="infoMensaje" type="infoMensaje" />
-                <xs:element name="listaProductos" type="listaProductos" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

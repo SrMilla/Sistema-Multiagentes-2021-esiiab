@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<msi
+<mei
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="msi.xsd">
+xsi:noNamespaceSchemaLocation="mei.xsd">
     <infoMensaje>
         <emisor>
             <ip>192.0.2.1</ip>
-            <id>-1</id>
+            <id>8</id>
             <tipo>comprador</tipo>
         </emisor>
         <receptor>
@@ -17,7 +17,7 @@ xsi:noNamespaceSchemaLocation="msi.xsd">
             <ipEmisor>192.0.2.1</ipEmisor>
             <contador>0</contador>
         </id>
-        <protocolo>alta</protocolo>
-        <tipo>MSI</tipo>
+        <protocolo>inicioActividad</protocolo>
+        <tipo>MEI</tipo>
     </infoMensaje>
-</msi>
+</mei>

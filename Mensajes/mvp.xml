@@ -1,48 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mensaje_venta_productos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MVP_Schema.xsd">
-    <info_mensaje>
+<?xml version="1.0"?>
+<mvp
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="mvp.xsd">
+    <infoMensaje>
         <emisor>
-            <tipo_emisor>Tienda</tipo_emisor>
-            <id_emisor>1</id_emisor>
-            <ip_emisor>192.168.0.4</ip_emisor>
-            <puerto_emisor>8000</puerto_emisor>
+            <ip>192.0.2.1</ip>
+            <id>8</id>
+            <tipo>tienda</tipo>
         </emisor>
         <receptor>
-            <tipo_receptor>Comprador</tipo_receptor>
-            <id_receptor>1</id_receptor>
-            <ip_receptor>192.168.0.3</ip_receptor>
-            <puerto_receptor>8000</puerto_receptor>
+            <ip>192.0.2.2</ip>
+            <id>5</id>
+            <tipo>comprador</tipo>
         </receptor>
-        <receptor>
-            <tipo_receptor>Monitor</tipo_receptor>
-            <id_receptor>1</id_receptor>
-            <ip_receptor>192.168.0.5</ip_receptor>
-            <puerto_receptor>8000</puerto_receptor>
-        </receptor>
-        <datos_mensaje>
-            <id_mensaje>3</id_mensaje>
-            <cuerpo>La tienda vende los productos al comprador y lo notifica al monitor</cuerpo>
-        </datos_mensaje>
-        <tipo_mensaje>MVP</tipo_mensaje>
-    </info_mensaje>
-    <lista_productos>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>0</contador>
+        </id>
+        <protocolo>compra</protocolo>
+        <tipo>MVP</tipo>
+    </infoMensaje>
+    <listaProductos>
         <producto>
-            <nombre_producto>Aceite</nombre_producto>
-            <id_producto>1</id_producto>
+            <nombre>Aceite</nombre>
+            <id>1</id>
             <cantidad>3</cantidad>
             <precio>8.99</precio>
         </producto>
         <producto>
-            <nombre_producto>Vino</nombre_producto>
-            <id_producto>2</id_producto>
+            <nombre>Vino</nombre>
+            <id>2</id>
             <cantidad>1</cantidad>
             <precio>10.99</precio>
         </producto>
         <producto>
-            <nombre_producto>Pan</nombre_producto>
-            <id_producto>3</id_producto>
+            <nombre>Pan</nombre>
+            <id>3</id>
             <cantidad>5</cantidad>
             <precio>2.99</precio>
         </producto>
-    </lista_productos>
-</mensaje_venta_productos>
+    </listaProductos>
+</mvp>

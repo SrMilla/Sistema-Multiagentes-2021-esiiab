@@ -3,12 +3,13 @@
 
     <xs:include schemaLocation="tiposBase.xsd" />
 
-    <!-- Mensaje de Compra de Productos -->
-    <xs:element name="mcp">
+    <!-- Mensaje de Arranca o Espera -->
+    <!-- En verdad siempre es espera pq arrancará cuando reciba el MCI,
+        por eso este mensaje solo lleva infoMensaje -->
+    <xs:element name="mae">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="infoMensaje" type="infoMensaje" />
-                <xs:element name="listaProductos" type="listaProductos" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

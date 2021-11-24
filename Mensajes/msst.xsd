@@ -1,17 +1,14 @@
 <?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="https://www.w3schools.com"
-    xmlns="https://www.w3schools.com"
-    elementFormDefault="qualified"
-    xmlns:im="otro grupo">
+    <xs:include schemaLocation="tiposBase.xsd" />
 
-    <xs:element name="mensaje">
-        <xs:sequence>
-            <xs:element name="emisor" type="im:emisor"/>
-            <xs:element name="receptor" type="im:receptor"/>
-            <xs:element name="tipo" type="im:tipo" fixed="MSST" />
-        </xs:sequence>
+    <!-- Mensaje de Solicitud de Salida de Tienda -->
+    <xs:element name="msst">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+            </xs:sequence>
+        </xs:complexType>
     </xs:element>
-    
 </xs:schema>

@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- ¿Hacen falta los 3 atributos?-->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://www.w3schools.com"
-           xmlns="https://www.w3schools.com"> 
+    <xs:include schemaLocation="tiposBase.xsd"/>
 
-<xs:include schemaLocation="Infomensaje.xsd"/>
-
-<xs:complexType name="mci">
-<xs:sequence>
-  <xs:element name="infoMensaje" type="infoMensaje"/>
-  <xs:element name="lista_productos" type="lista_productos"/>
-  <xs:element name="lista_tiendas" type="lista_tiendas"/>
-</xs:sequence>
-</xs:complexType>
-
+    <!-- Mensaje de Configuracion Inicial-->
+    <xs:element name="mci">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje"/>
+                <xs:element name="listaProductos" type="listaProductos"/>
+                <xs:element name="listaTiendas" type="listaTiendas" minOccurs="0"/> 
+                <!-- No llevara lista de tiendas si el destinatario es una tienda -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
