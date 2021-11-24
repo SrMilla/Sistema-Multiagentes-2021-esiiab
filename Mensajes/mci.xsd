@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!-- ¿Hacen falta los 3 atributos?-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.w3schools.com"
+           xmlns="https://www.w3schools.com"> 
+
+<xs:include schemaLocation="Infomensaje.xsd"/>
+
+<xs:complexType name="mci">
+<xs:sequence>
+  <xs:element name="infoMensaje" type="infoMensaje"/>
+  <xs:element name="lista_productos" type="lista_productos"/>
+  <xs:element name="lista_tiendas" type="lista_tiendas"/>
+</xs:sequence>
+</xs:complexType>
+
+</xs:schema>
