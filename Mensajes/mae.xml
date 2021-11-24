@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
-<msi
+<mae
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="msi.xsd">
+xsi:noNamespaceSchemaLocation="mae.xsd">
     <infoMensaje>
         <emisor>
             <ip>192.0.2.1</ip>
-            <id>-1</id>
-            <tipo>comprador</tipo>
+            <id>0</id>
+            <tipo>monitor</tipo>
         </emisor>
         <receptor>
             <ip>192.0.2.2</ip>
-            <id>0</id>
-            <tipo>monitor</tipo>
+            <id>1</id>
+            <tipo>tienda</tipo>
         </receptor>
         <id>
             <ipEmisor>192.0.2.1</ipEmisor>
             <contador>0</contador>
         </id>
-        <protocolo>alta</protocolo>
-        <tipo>MSI</tipo>
+        <protocolo>inicioActividad</protocolo>
+        <tipo>MAE</tipo>
     </infoMensaje>
-</msi>
+</mae>

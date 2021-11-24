@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="tiposBase.xsd" />
+
+    <!-- Mensaje de Solicitud de Entrada en Tienda -->
+    <xs:element name="mset">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="hora" type="hora"/>
+                <xs:element name="minuto" type="minuto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="hora">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="23"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="minuto">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="59"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

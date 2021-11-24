@@ -3,8 +3,10 @@
 
     <xs:include schemaLocation="tiposBase.xsd" />
 
-    <!-- Mensaje de Solicitud de Inicio-->
-    <xs:element name="msi">
+    <!-- Mensaje de Arranca o Espera -->
+    <!-- En verdad siempre es espera pq arrancará cuando reciba el MCI,
+        por eso este mensaje solo lleva infoMensaje -->
+    <xs:element name="mae">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="infoMensaje" type="infoMensaje" />

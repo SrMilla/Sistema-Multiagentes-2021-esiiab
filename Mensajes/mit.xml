@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ack
+<mit
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="ack.xsd">
+xsi:noNamespaceSchemaLocation="mit.xsd">
     <infoMensaje>
         <emisor>
             <ip>192.0.2.1</ip>
@@ -15,14 +15,19 @@ xsi:noNamespaceSchemaLocation="ack.xsd">
         </receptor>
         <id>
             <ipEmisor>192.0.2.1</ipEmisor>
-            <contador>9</contador>
+            <contador>0</contador>
         </id>
-        <protocolo>salidaTienda</protocolo>
-        <tipo>ACK</tipo>
+        <protocolo>solicitarTiendas</protocolo>
+        <tipo>MIT</tipo>
     </infoMensaje>
-    <tipoMensajePregunta>MSST</tipoMensajePregunta>
-    <idPregunta>
-        <ipEmisor>192.0.2.1</ipEmisor>
-        <contador>0</contador>
-    </idPregunta>
-</ack>
+    <listaTiendas>
+        <tienda>
+            <ip>192.0.2.3</ip>
+            <id>2</id>
+        </tienda>
+        <tienda>
+            <ip>192.0.2.4</ip>
+            <id>3</id>
+        </tienda>
+    </listaTiendas>
+</mit>

@@ -1,0 +1,10 @@
+<listaTiendas>
+    <tienda>
+        <ip>192.0.2.3</ip>
+        <id>2</id>
+    </tienda>
+    <tienda>
+        <ip>192.0.2.4</ip>
+        <id>3</id>
+    </tienda>
+</listaTiendas>

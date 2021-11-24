@@ -3,8 +3,8 @@
 
     <xs:include schemaLocation="tiposBase.xsd" />
 
-    <!-- Mensaje de Solicitud de Inicio-->
-    <xs:element name="msi">
+    <!-- Mensaje de Fin de Objetivos -->
+    <xs:element name="mfo">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="infoMensaje" type="infoMensaje" />
