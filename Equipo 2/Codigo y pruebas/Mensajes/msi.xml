@@ -4,8 +4,8 @@
     <info_mensaje>
         <emisor>
           <IP>192.0.2.2</IP>
-          <ID></ID>
-          <tipo>tienda</tipo>
+          <ID>0</ID>
+          <tipo>cliente</tipo>
         </emisor>
         <receptor>
           <IP>192.0.2.1</IP>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<name>
-    <nombre>Carlos</nombre>
-    <apellido>Gonzalez</apellido>
-</name>
+<game>
+    <player>
+        <name>R</name>
+        <class>King</class>
+    </player>
+    <player>
+        <name>C</name>
+        <class>Knight</class>
+    </player>
+</game>

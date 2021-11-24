@@ -24,12 +24,15 @@
         curl_setopt($ch,CURLOPT_POST, true);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $xml);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, true); 
+
+        //Solo utilizar para test en local 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
         $return = curl_exec($ch);
         $error = curl_error($ch);
 
+        //Utilizar para debug
         print_r($error);
 
         return $return;
@@ -42,11 +45,13 @@
     $msi = simplexml_load_file('Mensajes/msi.xml');
     $mci = simplexml_load_string(httpRequest($monitor_url, $msi));    
 
+    $self = ['Comprador',$mci-> id,getHostByName(getHostName()),'80'];
+
     $productos = array();
     $tiendas = array();
     $tiendas_visitadas = array();
     foreach($mci -> lista_producto -> producto as $producto) {
-        array_push($productos_init, ($producto -> id_producto) => ($producto -> cantidad));
+        array_push($productos, ($producto -> id_producto) => ($producto -> cantidad,$producto -> nombre_producto,$producto -> precio));
     }
     foreach($mci -> lista_tiendas -> tienda as $tienda) {
         array_push($tiendas, $tienda);
@@ -58,7 +63,7 @@
         array_push($tiendas_visitadas, $tiendas[i]);
 
         //Falta Funcion de Generar XML para los productos
-        $msip = simplexml_load_file('Mensajes/msip.xml'); //XML de productos
+        $msip = generateMSIP($self,$tiendas[i],$productos); //XML de productos
         $ip = $tiendas[i] -> ip;
         $url_tienda = 'http://'. $ip.'/';
         $mip = simplexml_load_string(httpRequest($url_tienda,$msip));

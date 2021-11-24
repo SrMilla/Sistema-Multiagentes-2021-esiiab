@@ -1,10 +1,12 @@
 <?php
     
+    require_once('mensajes.php');
 
     function httpRequest($url, $data) {
         $ch = curl_init();
 
         $xml = http_build_query(array('xml' => $data));
+        //print_r($xml);
 
         curl_setopt($ch,CURLOPT_URL, $url);
         curl_setopt($ch,CURLOPT_POST, true);
@@ -22,12 +24,19 @@
     }
 
     //The data you want to send via POST
-    $xml = simplexml_load_file('test.xml');
-    $url = "http://127.0.0.1/server_test.php";
+    //$xml = file_get_contents('mensajes/msi.xml');
+    //$url = "http://172.19.180.75/recibir_mensajes_2021.php";
 
-    $result = httpRequest($url, $xml);
+
+    $xml = generateMSIP(['Comprador','1','192.168.0.1','80'],['Tienda','1','192.168.0.2','80'],[0=>['3','Pan','5']]);
+    $url = "localhost/server_test.php";
+
+    //echo('PreRequest');
+
+    $result = simplexml_load_string(httpRequest($url, $xml));
     
     //print_r($result);
+
     
-    echo 'La respuesta es ', $result;
+    echo 'La ip de la tienda es ', $result->info_mensaje->emisor->ip_emisor;
 ?>
