@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listaProductos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="listaProductos.xsd">
+    <producto>
+        <nombre_producto>Aceite</nombre_producto>
+        <id_producto>1</id_producto>
+        <cantidad>3</cantidad>
+        <precio>8.99</precio>
+    </producto>
+    <producto>
+        <nombre_producto>Vino</nombre_producto>
+        <id_producto>2</id_producto>
+        <cantidad>1</cantidad>
+        <precio>10.99</precio>
+    </producto>
+    <producto>
+        <nombre_producto>Pan</nombre_producto>
+        <id_producto>3</id_producto>
+        <cantidad>5</cantidad>
+        <precio>2.99</precio>
+    </producto>
+</listaProductos>
