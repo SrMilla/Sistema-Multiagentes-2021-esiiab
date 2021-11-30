@@ -1,17 +1,7 @@
 <?php
-//Iniciamos la conexión con la bbdd
-$server="localhost";
-$db_username="root";
-$db_password='';
-$database="multi";
-$link = mysqli_connect("$server","$db_username","$db_password") or die ("Imposible conectar a mySQL database");
-$a= mysqli_select_db($link,"$database") or die("No se pudo conectar a la base de datos");
+require 'conectarBBDD.php';
+$link = conexion();
 
-if(!$link)
-{
-    die ("No se ha podido encontrar porque: ".mysql_error());
-}
-mysql_select_db("multi",$link);
 
 $n_prod    = 3;                     // Numero de productos
 $n_tiendas = 3;                     // Numero de tiendas
