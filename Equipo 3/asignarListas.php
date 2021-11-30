@@ -6,12 +6,12 @@ $db_password='';
 $database="multi";
 $link = mysqli_connect("$server","$db_username","$db_password") or die ("Imposible conectar a mySQL database");
 $a= mysqli_select_db($link,"$database") or die("No se pudo conectar a la base de datos");
-$conexion = mysql_connect("localhost","root","");
-if(!$conexion)
+
+if(!$link)
 {
     die ("No se ha podido encontrar porque: ".mysql_error());
 }
-mysql_select_db("multi",$conexion);
+mysql_select_db("multi",$link);
 
 $n_prod    = 3;                     // Numero de productos
 $n_tiendas = 3;                     // Numero de tiendas
@@ -30,18 +30,18 @@ $tienda = 0;
 // El agente monitor tiene id=0, de modo que empezamos a contar en id=1
 for ($i = 1; $i <= $n_agentes; $i++) {
     $sentencia = "SELECT * FROM Mensajes WHERE idE = $i";
-    $resultado = mysql_query($link, $sentencia); //----------TODO: me falta ponerle el link a la BBDD
+    $resultado = mysqli_query($link, $sentencia);
     $m = mysql_fecth_array($resultado); // Pasamos el resultado de la consulta a un array
     if ($m["tipoE"] == "comprador") {
         $lista_p = $listas_p_c[$comp];
         $lista_t = $listas_t[$comp];
         $sentencia = "UPDATE Compradores SET tienda1=$lista_t[1], tienda2=$lista_t[2] WHERE id = $i";
-        if (!my_sql_query($link, $sentencia)) {
+        if (!mysqli_query($link, $sentencia)) {
             //----------TODO: error al insertar info en bbdd
         }
         for ($j = 0; $j < count($lista_p); $j++) {
             $sentencia = "INSERT INTO Prod_Comprador VALUES ($lista_p[$j][0],$i,$lista_p[$j][1])";
-            if (!my_sql_query($link, $sentencia)) {
+            if (!mysqli_query($link, $sentencia)) {
                 //----------TODO: error al insertar info en bbdd
             }
         }
@@ -54,7 +54,7 @@ for ($i = 1; $i <= $n_agentes; $i++) {
 
         for ($j = 0; $j < count($lista_p); $j++) {
             $sentencia = "INSERT INTO Prod_Comprador VALUES ($lista_p[$j][0],$i,$lista_p[$j][1])";
-            if (!my_sql_query($link, $sentencia)) {
+            if (!mysqli_query($link, $sentencia)) {
                 //----------TODO: error al insertar info en bbdd
             }
         }
@@ -94,6 +94,11 @@ function generar_listas_productos($n_tiendas, $n_comp, $n_prod) {
 }
 
 function generar_listas_tiendas($n_tiendas, $n_comp) {
-    
+    $listas_t = new SplFixedArray($n_comp);
+
+    for ($i = 0; $i < $n_comp; $i++) {
+        
+    }
+    return $listas_t
 }
 ?>

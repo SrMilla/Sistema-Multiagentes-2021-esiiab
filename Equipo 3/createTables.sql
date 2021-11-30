@@ -1,60 +1,61 @@
-USE bbdd
+USE bbdd;
 CREATE TABLE Mensajes (
     -- emisor
-    ipE varchar(15) NOT NULL,
-    cont integer NOT NULL, -- contador
-    idE int UNSIGNED,
-    tipoE varchar,
+    ipE VARCHAR(15) NOT NULL,
+    cont INT NOT NULL, -- contador
+    idE INT UNSIGNED NOT NULL,
+    tipoE ENUM('monitor','comprador','tienda'),
     -- receptor
-    ipR varchar(15) NOT NULL,
-    idR int UNSIGNED NOT NULL,
-    tipoR varchar,
+    ipR VARCHAR(15) NOT NULL,
+    idR INT UNSIGNED NOT NULL,
+    tipoR ENUM('monitor','comprador','tienda'),
 
-    protocolo varchar,
-    tipoM varchar, -- tipo de mensaje
-    detalles varchar,
+    protocolo ENUM('alta','inicioActividad','entradaTienda','compra','solicitarTiendas','salidaTienda','finalizacion'),
+    tipoM ENUM('MSI','MCI','MEI','MAE','MSET','MSIP','MIP','MCP','MVP','MSIT','MIT','MSST','MFO','ACK','ERROR'), -- tipo de mensaje
+    detalles TEXT,
     PRIMARY KEY (ipE, cont)
 );
 
 CREATE TABLE Productos (
-    idP int UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre varchar,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50),
     -- precio base del producto (precio minimo)
     precio float NOT NULL,
-    PRIMARY KEY (idP)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE Tiendas (
-    id int UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre varchar,
-    ip varchar(15) NOT NULL,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    ip VARCHAR(15) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE Compradores (
-    id int UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre varchar,
-    ip varchar(15) NOT NULL,
-    tienda1 int UNSIGNED NOT NULL,
-    tienda2 int UNSIGNED,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    ip VARCHAR(15) NOT NULL,
+    tienda1 INT UNSIGNED NOT NULL,
+    tienda2 INT UNSIGNED,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE Prod_Tienda (
-    idP int UNSIGNED NOT NULL,
-    idT int UNSIGNED NOT NULL,
-    cant int UNSIGNED NOT NULL,
+    idP INT UNSIGNED NOT NULL,
+    idT INT UNSIGNED NOT NULL,
+    cant INT UNSIGNED NOT NULL,
     -- precio de la tienda para este producto (por unidad)
     -- precio float NOT NULL,
     PRIMARY KEY (idP, idT),
-    FOREIGN KEY (idP) REFERENCES Productos(idP),
-    FOREIGN KEY (idT) REFERENCES Tiendas(idT)
+    FOREIGN KEY (idP) REFERENCES Productos(id),
+    FOREIGN KEY (idT) REFERENCES Tiendas(id)
 );
 
 CREATE TABLE Prod_Comprador (
-    idP int UNSIGNED NOT NULL,
-    idC int UNSIGNED NOT NULL,
-    cant int UNSIGNED NOT NULL,
+    idP INT UNSIGNED NOT NULL,
+    idC INT UNSIGNED NOT NULL,
+    cant INT UNSIGNED NOT NULL,
     PRIMARY KEY (idP, idC),
-    FOREIGN KEY (idC) REFERENCES Compradores(idC)
+    FOREIGN KEY (idP) REFERENCES Productos(id),
+    FOREIGN KEY (idC) REFERENCES Compradores(id)
 );
