@@ -12,7 +12,9 @@ $n_comp    = mysqli_fetch_array($resultado)[0]; // Numero de compradores
 $n_agentes = $n_tiendas + $n_comp;  // Numero de agentes (sin contar el monitor)
 $n_prod = 5;//$_POST['n_prod'];     // Numero de productos
 
-
+$sentencia = "SELECT n_mensajes FROM Variables_Globales WHERE NumeroFila=1;";
+$resultado = mysqli_query($link, $sentencia);
+$n_mensajes = mysqli_fetch_array($resultado)[0]; // Contador de mensajes que envia el monitor
 // 
 for ($i = 1; $i <= $n_prod; $i++) {
     $sentencia = "INSERT INTO Productos(nombre,precio) VALUES ('p".$i."',$i);";
@@ -57,11 +59,12 @@ for ($i = 1; $i <= $n_agentes; $i++) {
             }
         }
         //----------TODO: implementar función generar_MCI
-        $mci = generar_MCI($lista_p, $lista_t, $m);
+        $mci = generar_MCI($lista_p, $lista_t, $m, $n_mensajes);
+        $n_mensajes++;
         $sentencia = "INSERT INTO MCIs VALUES (".$i.",'$mci');";
-            if (!mysqli_query($link, $sentencia)) {
-                //----------TODO: error al insertar info en bbdd
-            }
+        if (!mysqli_query($link, $sentencia)) {
+            //----------TODO: error al insertar info en bbdd
+        }
         $comp++;
     } else {
         $lista_p = $listas_p_t[$tienda];
@@ -74,9 +77,18 @@ for ($i = 1; $i <= $n_agentes; $i++) {
             }
         }
         //----------TODO: implementar función generar_MCI
-        $lista_MCI_t[$tienda] = generar_MCI($lista_p, [], $m);
+        $mci = generar_MCI($lista_p, [], $m, $n_mensajes);
+        $n_mensajes++;
+        $sentencia = "INSERT INTO MCIs VALUES (".$i.",'$mci');";
+        if (!mysqli_query($link, $sentencia)) {
+            //----------TODO: error al insertar info en bbdd
+        }
         $tienda++;
     }
+}
+$sentencia = "UPDATE Variables_Globales SET n_mensajes=".$n_mensajes." WHERE NumeroFila = 1;";
+if (!mysqli_query($link, $sentencia)) {
+    //----------TODO: error al insertar info en bbdd
 }
 
 function generar_listas_productos($n_tiendas, $n_comp, $n_prod) {
@@ -151,8 +163,8 @@ function generar_listas_tiendas($n_tiendas, $n_comp, $link) {
     }
     return $listas_t;
 }
-function generar_MCI($lista_p, $lista_t, $m){
-    $xml = simplexml_load_string('mci.xml');
+function generar_MCI($lista_p, $lista_t, $m, $n_mensajes){
+    $xml = simplexml_load_file('mci.xml');
     $xml -> infoMensaje -> emisor -> ip = $m['ipR'];
     $xml -> infoMensaje -> emisor -> id = $m['idR'];
     $xml -> infoMensaje -> emisor -> tipo = $m['tipoR'];
@@ -160,18 +172,18 @@ function generar_MCI($lista_p, $lista_t, $m){
     $xml -> infoMensaje -> receptor -> id = $m['idE'];
     $xml -> infoMensaje -> receptor -> tipo = $m['tipoE'];
     $xml -> infoMensaje -> id -> ipEmisor = $m['ipR'];
-    $xml -> infoMensaje -> id -> contador = 0; // TODO: no se como guardar un contador global.
+    $xml -> infoMensaje -> id -> contador = $n_mensajes; // TODO: no se como guardar un contador global.
     $xml -> infoMensaje -> protocolo = 'alta';
     $xml -> infoMensaje -> tipo = 'MSI';
     for ($i = 0; $i < count($lista_p); $i++) {
-        $xml -> listaProductos -> producto[$i] -> nombre = $lista_p[0];
-        $xml -> listaProductos -> producto[$i] -> id = $lista_p[1];
-        $xml -> listaProductos -> producto[$i] -> cantidad = $lista_p[2];
-        $xml -> listaProductos -> producto[$i] -> precio = $lista_p[3];
+        $xml -> listaProductos -> producto[$i] -> nombre = $lista_p[$i][0];
+        $xml -> listaProductos -> producto[$i] -> id = $lista_p[$i][1];
+        $xml -> listaProductos -> producto[$i] -> cantidad = $lista_p[$i][2];
+        $xml -> listaProductos -> producto[$i] -> precio = $lista_p[$i][3];
     }
     for ($i = 0; $i < count($lista_t); $i++){
-        $xml -> listaTiendas -> tienda[$i] -> ip = $lista_t[1];
-        $xml -> listaTiendas -> tienda[$i] -> id = $lista_t[0];
+        $xml -> listaTiendas -> tienda[$i] -> ip = $lista_t[$i][1];
+        $xml -> listaTiendas -> tienda[$i] -> id = $lista_t[$i][0];
     }
     return $xml->asXML();
 }

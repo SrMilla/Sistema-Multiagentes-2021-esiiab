@@ -12,6 +12,10 @@ DROP TABLE IF EXISTS Productos;
 
 DROP TABLE IF EXISTS Mensajes;
 
+DROP TABLE IF EXISTS MCIs;
+
+DROP TABLE IF EXISTS Variables_Globales;
+
 
 CREATE TABLE Mensajes (
     -- emisor
@@ -84,6 +88,13 @@ CREATE TABLE MCIs (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE Variables_Globales (
+    NumeroFila INT,
+    n_mensajes INT UNSIGNED,
+    primary key (NumeroFila),
+    check       (NumeroFila = 1)
+);
+
 INSERT INTO Tiendas VALUES (2,'t1','192.0.2.2');# 1 row affected.
 
 INSERT INTO Tiendas VALUES (5,'t2','192.0.2.5');# 1 row affected.
@@ -103,3 +114,4 @@ INSERT INTO Mensajes VALUES ('192.0.2.3',0,3,'comprador','192.0.2.10',0,'monitor
 INSERT INTO Mensajes VALUES ('192.0.2.4',0,4,'comprador','192.0.2.10',0,'monitor','alta','MSI','');# 1 row affected.
 
 INSERT INTO Mensajes VALUES ('192.0.2.5',0,5,'tienda','192.0.2.10',0,'monitor','alta','MSI','');# 1 row affected.
+INSERT INTO Variables_Globales VALUES (1,0);
