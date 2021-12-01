@@ -69,6 +69,10 @@ CREATE TABLE MCIs (
 CREATE TABLE Variables_Globales (
     NumeroFila INT,
     n_mensajes INT UNSIGNED,
+    contT INT UNSIGNED,
+    contC INT UNSIGNED,
     primary key (NumeroFila),
     check       (NumeroFila = 1)
 );
+
+INSERT INTO Variables_Globales VALUES (1,0,0,0);
