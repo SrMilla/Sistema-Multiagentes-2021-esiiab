@@ -71,6 +71,9 @@ namespace Servidor_Tienda_C
                     return false;
                 }
         }
+        /// <summary>
+        /// Crea una base de datos 
+        /// </summary>
         public static void Creacion_BBDD()
         {
             List<string> listOfNames = new List<string>()

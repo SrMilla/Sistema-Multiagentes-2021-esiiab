@@ -9,6 +9,11 @@ namespace Servidor_Tienda_C
 {
     public class Mensajes
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="endpoint_Cliente"></param>
+        /// <param name="mensaje"></param>
         public Mensajes(EndPoint endpoint_Cliente, string mensaje)
         {
             this.Endpoint_Cliente = endpoint_Cliente;

@@ -37,6 +37,7 @@ namespace Servidor_Tienda_C.XML
             XmlElement contador = this.doc.CreateElement(string.Empty, "contador", string.Empty);
             id_mensaje.AppendChild(contador);
 
+
         }
     }
 }

@@ -13,17 +13,6 @@
     </receptor>
   </info_mensaje>
   <mensaje>
-    <mensajeProv>
-      <emisor>
-        <IP>IP_EMISOR</IP>
-        <Id>Id_EMISOR</Id>
-        <tipo>tipo_emisor</tipo>
-      </emisor>
-      <receptor>
-        <IP>1</IP>
-        <Id>1</Id>
-        <tipo>tipo_emisor</tipo>
-      </receptor>
-    </mensajeProv>
+    <mensajeProv />
   </mensaje>
 </Lista_de_compra>

@@ -16,6 +16,7 @@ namespace Servidor_Tienda_C
 
         public string Nombre_producto { get; set; }
         public int Cantidad { get; set; }
+        
 
     }
 }

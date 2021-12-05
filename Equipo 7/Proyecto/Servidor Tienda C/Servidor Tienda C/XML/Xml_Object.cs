@@ -20,7 +20,7 @@ namespace Servidor_Tienda_C
         public string protocolo { get; set; }
         public string tipo { get; set; }
         public XmlElement enunciado { get; set; }
-
+        public XmlElement element1 { get; set; }
         public Xml_Object(string emisor_ip, string emisor_id, string emisor_tipo, string receptor_ip, string receptor_id, string receptor_tipo, string protocolo, string tipo) 
         {
             this.emisor_ip = emisor_ip;
@@ -110,14 +110,14 @@ namespace Servidor_Tienda_C
             this.enunciado = this.doc.CreateElement(string.Empty, this.tipo, string.Empty);
             this.doc.AppendChild(this.enunciado);
 
-            XmlElement element1 = this.doc.CreateElement(string.Empty, "info_mensaje", string.Empty);
-            this.enunciado.AppendChild(element1);
+            this.element1 = this.doc.CreateElement(string.Empty, "info_mensaje", string.Empty);
+            this.enunciado.AppendChild(this.element1);
 
             XmlElement emisor = this.doc.CreateElement(string.Empty, "emisor", string.Empty);
-            element1.AppendChild(emisor);
+            this.element1.AppendChild(emisor);
            
             XmlElement receptor = this.doc.CreateElement(string.Empty, "receptor", string.Empty);
-            element1.AppendChild(receptor);
+            this.element1.AppendChild(receptor);
             /*EMISOR_INFO_MENSAJE*/
             XmlElement e_ip = this.doc.CreateElement(string.Empty, "IP", string.Empty);
             emisor.AppendChild(e_ip);

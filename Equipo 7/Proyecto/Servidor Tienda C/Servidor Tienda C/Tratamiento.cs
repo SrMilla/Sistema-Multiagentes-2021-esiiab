@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Servidor_Tienda_C.XML;
 namespace Servidor_Tienda_C
-{
+{/// <summary>
+/// Clase que tendra los metodos que se usaran para tratar los metodos
+/// </summary>
     static class Tratamiento
     {
         public static void tratamiento_lista_productos()

@@ -20,7 +20,8 @@ namespace Servidor_Tienda_C
                if(VGlobal.MensajesBuffer.Count != 0)
                 {
                     Console.Write("Se empieza tratamiento de mensaje");
-                    //tratamiento();
+                    tratamiento();
+                    VGlobal.MensajesBuffer.Clear();
                 }
                
             }
@@ -51,14 +52,14 @@ namespace Servidor_Tienda_C
             Thread C_buffer = new Thread(new ThreadStart(comprobar_buffer));
             Thread HServidor = new Thread(new ThreadStart(HiloServidor));
             Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
-            // C_buffer.Start();
+            //C_buffer.Start();
             //HServidor.Start();
-            Pruebas.Start();
+            //Pruebas.Start();
             //var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
             Base_de_datos.Creacion_BBDD();
-            /*string t = "1";
-            var aux = new XML_lista_compra(t,t,t,t,t,t,t,"Lista_de_compra");
-            aux.generar_xml();*/
+            string t = "1";
+            var aux = new XML_error(t,t,t,t,t,t,t,"Lista_de_compra");
+            aux.generar_xml("d");
         }
     }
 }
