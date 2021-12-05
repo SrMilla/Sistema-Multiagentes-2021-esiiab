@@ -20,10 +20,15 @@ namespace Servidor_Tienda_C
             this.mensaje = mensaje;
         }
 
+        public Mensajes()
+        {
+        }
+
         public System.Net.EndPoint Endpoint_Cliente { get; set; }
         public string mensaje { get; set; }
         public string respuesta { get; set; }
-
+        public bool tratado { get; set; }
+        public bool recibido { get; set; }
 
         
     }

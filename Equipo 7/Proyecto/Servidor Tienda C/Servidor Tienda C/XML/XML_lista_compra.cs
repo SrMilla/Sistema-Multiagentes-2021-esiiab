@@ -47,5 +47,6 @@ namespace Servidor_Tienda_C.XML
 
             this.doc.Save(".XMLFile2.xml");
         }
+       
     }
 }
