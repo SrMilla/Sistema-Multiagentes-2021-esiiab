@@ -1,6 +1,6 @@
 <?php
     
-    require_once('mensajes.php');
+    //require_once('mensajes.php');
 
     function httpRequest($url, $data) {
         $ch = curl_init();
@@ -24,7 +24,7 @@
     }
 
     //The data you want to send via POST
-    $xml = file_get_contents('msi.xml');
+    $xml = file_get_contents('Mensajes/mei.xml');
     $url = "localhost/recibirMensajes.php";
 
 

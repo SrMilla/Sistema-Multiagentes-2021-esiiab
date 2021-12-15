@@ -1,5 +1,4 @@
 <?php
-error_log('proban1');
 //Inicializamos variables.
 $contT = 0;
 $contC = 0;
@@ -30,7 +29,7 @@ $protocolo = $xml -> infoMensaje -> protocolo;
 $tipomsn = $xml -> infoMensaje -> tipo;
 
 //TODO: FALTA DETALLES.
-$detalles = "jeje";
+$detalles = "Detalles";
 
 //Si es un MSI (mensaje de alta), vemos si es tienda o cliente y aumentamos el número de los mismos.
 if($tipomsn=="MSI") {
@@ -44,110 +43,63 @@ if($tipomsn=="MSI") {
     } else {
         $contC  = $contC + 1;
     }
-
-    echo xmlwriter_output_memory($xw);
-
 }
 
-// Nuevo objeto SimpleXMLElement al que se le pasa un archivo xml.
-//$ack = new SimpleXMLElement('Mensajes/ack.xml', 0, true);
+// Añadimos los datos al ACK.
 
-// Añadimos los datos de ACK.
+// Primero cargamos el fichero ACK.
+$ack = simplexml_load_file('Mensajes/ack.xml');
 
-//Configruación inicial xmlwriter.
-$xw = xmlwriter_open_memory();
-xmlwriter_set_indent($xw, 1);
-$res = xmlwriter_set_indent_string($xw, ' ');
+// Una vez cargamos el fichero, cambiamos los datos por los que hemos calculado previamente.
+$ack -> infoMensaje -> emisor -> ip = $ip_emisor;
+$ack -> infoMensaje -> emisor -> id = $id_emisor;
+$ack -> infoMensaje -> emisor -> tipo = $tipo_emisor;
+$ack -> infoMensaje -> receptor -> ip = $ip_receptor;
+$ack -> infoMensaje -> receptor -> id = $id_receptor;
+$ack -> infoMensaje -> receptor -> tipo = $tipo_receptor;
+$ack -> infoMensaje -> id -> ipEmisor = $ip_emisor;
+$ack -> infoMensaje -> id -> contador = $n_mensajes;
+$ack -> infoMensaje -> protocolo = $protocolo;
+$ack -> infoMensaje -> tipo = 'ACK';
+$ack -> tipoMensajePregunta = $tipomsn;
+$ack -> idPregunta -> ipEmisor = $ip_emisor;
+$ack -> idPregunta -> contador = $contador;
 
-xmlwriter_start_document($xw, '1.0', 'UTF-8');
-
-    //Empiezo a rellenar ack.xml.
-
-    xmlwriter_start_element($xw, 'ack');
-        //Primera parte de un XML.
-        xmlwriter_start_attribute($xw, 'xmlns:xsi');
-        xmlwriter_text($xw, 'http://www.w3.org/2001/XMLSchema-instance');
-        xmlwriter_end_attribute($xw);
-        xmlwriter_start_attribute($xw, 'xsi:noNamespaceSchemaLocation');
-        xmlwriter_text($xw, 'ack.xsd');
-        xmlwriter_end_attribute($xw);
-
-        //Pasamos a rellenar cada uno de los elementos de ack.xml.
-        //Elemento info_mensaje.
-        xmlwriter_start_element($xw, 'infoMensaje');
-            //Elemento emisor.
-            xmlwriter_start_element($xw, 'emisor');
-                xmlwriter_start_element($xw, 'ip');
-                xmlwriter_text($xw, $ip_receptor);
-                xmlwriter_end_element($xw);
-                xmlwriter_start_element($xw, 'id');
-                xmlwriter_text($xw, $id_receptor);
-                xmlwriter_end_element($xw);
-                xmlwriter_start_element($xw, 'tipo');
-                xmlwriter_text($xw, $tipo_receptor);
-                xmlwriter_end_element($xw);
-            xmlwriter_end_element($xw);
-            //Elemento receptor.
-            xmlwriter_start_element($xw, 'receptor');
-                xmlwriter_start_element($xw, 'ip');
-                xmlwriter_text($xw, $ip_emisor);
-                xmlwriter_end_element($xw);
-                xmlwriter_start_element($xw, 'id');
-                xmlwriter_text($xw, $id_emisor);
-                xmlwriter_end_element($xw);
-                xmlwriter_start_element($xw, 'tipo');
-                xmlwriter_text($xw, $tipo_emisor);
-                xmlwriter_end_element($xw);
-            xmlwriter_end_element($xw);
-            //Elemento id.
-            xmlwriter_start_element($xw, 'id');
-                xmlwriter_start_element($xw, 'ipEmisor');
-                xmlwriter_text($xw, $ip_receptor);
-                xmlwriter_end_element($xw);
-                xmlwriter_start_element($xw, 'contador');
-                xmlwriter_text($xw, $n_mensajes);
-                $n_mensajes=$n_mensajes+1;
-                xmlwriter_end_element($xw);
-            xmlwriter_end_element($xw);
-            //Elemento protocolo.
-            xmlwriter_start_element($xw, 'protocolo');
-                xmlwriter_text($xw, $protocolo);
-            xmlwriter_end_element($xw);
-            //Elemento tipo.
-            xmlwriter_start_element($xw, 'tipo');
-                xmlwriter_text($xw, 'ACK');
-            xmlwriter_end_element($xw);
-
-        xmlwriter_end_element($xw);
-        //Elemento tipoMensajePregunta.
-        xmlwriter_start_element($xw, 'tipoMensajePregunta');
-            xmlwriter_text($xw, $tipomsn);
-        xmlwriter_end_element($xw);
-        //Elemento idPregunta.
-        xmlwriter_start_element($xw, 'idPregunta');
-            xmlwriter_start_element($xw, 'ipEmisor');
-            xmlwriter_text($xw, $ip_emisor);
-            xmlwriter_end_element($xw);
-            xmlwriter_start_element($xw, 'contador'); 
-            xmlwriter_text($xw, $contador);
-            xmlwriter_end_element($xw);
-        xmlwriter_end_element($xw); 
-
-    xmlwriter_end_element($xw); 
-
-xmlwriter_end_document($xw);
-
-error_log('proban2');
 //Iniciamos la conexión con la BBDD.
 require_once 'conectarBBDD.php';
 $link = conexion();
-error_log('proban3');
-$sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$ip_emisor',$contador,$id_emisor,'$tipo_emisor','$ip_receptor',$id_receptor,'$tipo_receptor','$protocolo','$tipomsn','$detalles')"; //FALTAN DETALLES. 
-error_log($sql);
+error_log($id_emisor);
+error_log($contador);
+$sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$ip_emisor',$contador,$id_emisor,'$tipo_emisor','$ip_receptor',$id_receptor,'$tipo_receptor','$protocolo','$tipomsn','$detalles');"; 
 if (!mysqli_query($link, $sql)) {
     error_log('ERROR AL INSERTAR');//----------TODO: error al insertar info en bbdd
 }
-error_log('proban4');
+
+// Si tenemos un mensaje MSI mandamos un ACK como respuesta.
+if($tipomsn=="MSI") {
+    echo $ack-> asXML();
+}
+
+// Mensaje MEI
+if($tipomsn=="MEI") {
+    $sql = "SELECT COUNT(*) FROM MCIs";
+    $resultado = mysqli_query($link, $sql);
+    $existe_mci = mysqli_fetch_array($resultado)[0];
+    error_log('\n\n'.$existe_mci);
+    if($existe_mci > 0) {
+        $sentencia = "SELECT mci FROM MCIs WHERE id=$id_emisor;";
+        $resultado = mysqli_query($link, $sentencia);
+        //var_dump($resultado);
+        $mci= mysqli_fetch_array($resultado)[0];
+        //$mci= mysqli_fetch_row($resultado);
+        error_log($mci);
+        echo $mci;
+    }
+    else {
+        echo $ack-> asXML();
+    }
+}
+
 
 //Dependiendo del tipo de mensaje, hacemos una cosa u otra.
 
@@ -171,5 +123,7 @@ error_log('proban4');
 /*if(!my_sql_query($sql, $link)) {
     //TODO ERROR
 }*/
+
+//echo xmlwriter_output_memory($xw);
 
 ?>

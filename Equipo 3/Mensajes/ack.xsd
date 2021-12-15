@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="tiposBase.xsd" />
+
+    <!-- ACK -->
+    <xs:element name="ack">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="tipoMensajePregunta" type="tipoMensaje"/>
+                <!-- Tipo del mensaje al que responde -->
+                <xs:element name="idPregunta" type="idMensaje" />
+                <!-- Id del mensaje al que responde -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
