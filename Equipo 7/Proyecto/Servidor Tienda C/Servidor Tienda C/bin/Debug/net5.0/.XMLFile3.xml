@@ -1,18 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Lista_de_compra>
+<error>
   <info_mensaje>
     <emisor>
-      <IP>IP_EMISOR</IP>
-      <Id>Id_EMISOR</Id>
-      <tipo>tipo_emisor</tipo>
+      <ip>1</ip>
+      <id>1</id>
+      <tipo>1</tipo>
     </emisor>
     <receptor>
-      <IP>1</IP>
-      <Id>1</Id>
-      <tipo>tipo_emisor</tipo>
+      <ip>1</ip>
+      <id>1</id>
+      <tipo>
+      </tipo>
     </receptor>
+    <id>
+      <ipEmisor>1</ipEmisor>
+    </id>
+    <protocolo>protocolo v</protocolo>
+    <tipo>error</tipo>
   </info_mensaje>
   <mensaje>
     <mensajeProv />
   </mensaje>
-</Lista_de_compra>
+</error>

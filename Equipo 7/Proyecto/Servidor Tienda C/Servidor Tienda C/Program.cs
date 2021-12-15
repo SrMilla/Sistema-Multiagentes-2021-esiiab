@@ -29,6 +29,8 @@ namespace Servidor_Tienda_C
         /// <summary>
         /// Esta funcion lo que hace es buscar el primer mensaje que no se haya tratado
         /// </summary>
+        /// 
+        
         public static void tratamiento()
         {
             bool epicardo = false;
@@ -66,12 +68,67 @@ namespace Servidor_Tienda_C
             VGlobal.MensajesBuffer.RemoveAt(0);
 
         }
+        public static void tratamiento2()
+        {
+            while (true)
+            {
+                while (VGlobal.MensajesBuffer.Count > 0)
+                {
+                    VGlobal.MensajeActual = VGlobal.MensajesBuffer[0];
+                    // tipo_mensaje();
+                    //VGlobal.Mensaje_tratado = new XML_ack(VGlobal.MensajeActual.mensaje);
+                    var aux = tipo_mensaje(VGlobal.MensajeActual.mensaje);
+                    //var aux = "mei";
+                    switch (aux)
+                    {
+                        case "mci":
+                            Console.WriteLine("Se ha recivido un mensaje " + aux + " que contiene:" + "\n");
+                            VGlobal.Mensaje_tratado = new XML_mci(VGlobal.MensajeActual.mensaje);
+                            break;
+                        case "mei":
+                            Console.WriteLine("Se ha recivido un mensaje " + aux + " que contiene:" + "\n");
+                            VGlobal.Mensaje_tratado = new XML_mei(VGlobal.MensajeActual.mensaje);
+                            break;
+                        case "ack":
+                            Console.WriteLine("Se ha recivido un mensaje " + aux + " que contiene:" + "\n");
+                            VGlobal.Mensaje_tratado = new XML_ack(VGlobal.MensajeActual.mensaje);
+                            break;
+
+                    }
+                    VGlobal.MensajesBuffer.RemoveAt(0);
+                }
+            }
+            //VGlobal.Mensaje_tratado = new XML_mci(VGlobal.MensajeActual.mensaje);
+            
+            
+        } 
+        public static string tipo_mensaje(string mensaje)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(mensaje);
+            var t = doc.InnerXml;
+            return doc.SelectNodes("/")[0].LastChild.Name;
+            
+        }
         public static void rellenar_buffer_prueba()
         {
             System.Net.EndPoint x = (EndPoint)new IPEndPoint(IPAddress.Any, 0);
             string mensaje = "WILLEM DAFOE";
-            VGlobal.añadirBuffer(x, VGlobal.mensaje_prueba.ToString());
-            tratamiento();
+            var doc = new XmlDocument();
+
+            doc.Load("prueba_mci.xml");
+            var t = doc.InnerXml;
+
+            VGlobal.añadirBuffer(x,t);
+            doc.Load("prueba_Ack.xml");
+            t = doc.InnerXml;
+            VGlobal.añadirBuffer(x, t);
+            
+            doc.Load("prueba_mei.xml");
+            t = doc.InnerXml;
+            VGlobal.añadirBuffer(x, t);
+
+            tratamiento2();
             //VGlobal.añadirBuffer(x, mensaje);
 
             Console.WriteLine("Inicia la prueba");
@@ -81,16 +138,22 @@ namespace Servidor_Tienda_C
         {
             Console.WriteLine("Hello World!");
             Thread C_buffer = new Thread(new ThreadStart(comprobar_buffer));
+            
+                 Thread trata2 = new Thread(new ThreadStart(tratamiento2));
             Thread HServidor = new Thread(new ThreadStart(HiloServidor));
             Thread Pruebas = new Thread(new ThreadStart(rellenar_buffer_prueba));
-            C_buffer.Start();
+            //C_buffer.Start();
             HServidor.Start();
+                trata2.Start();
             //Pruebas.Start();
             //var t = new Xml_Object(VGlobal.mensaje_prueba.ToString());
             Base_de_datos.Creacion_BBDD();
             /*string t = "1";
             var aux = new XML_lista_compra(t,t,t,t,t,t,t,"Lista_de_compra");
             aux.generar_xml();*/
+            String t = "1";
+            var aux = new XML_error(t, t, t, t, t, t, t, "error");
+            aux.generar_xml("saboir"); 
         }
     }
 }

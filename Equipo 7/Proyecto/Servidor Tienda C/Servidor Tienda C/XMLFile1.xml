@@ -1,30 +1,28 @@
-﻿ <?xml version="1.0"?>
-<!--ACK-->
-<!--¿Cómo poner referencia a squema?-->
-<ack>
-	<info_mensaje>
+﻿<?xml version="1.0"?>
+<ack
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ack.xsd">
+	<infoMensaje>
 		<emisor>
-			<IP>192.0.2.1</IP>
-			<ID>0</ID>
-			<tipo>monitor</tipo>
+			<ip>192.0.2.1</ip>
+			<id>8</id>
+			<tipo>tienda</tipo>
 		</emisor>
 		<receptor>
-			<IP>192.0.2.2</IP>
-			<ID>2</ID>
-			<tipo>tienda</tipo>
+			<ip>192.0.2.2</ip>
+			<id>0</id>
+			<tipo>comprador</tipo>
 		</receptor>
 		<id>
-			<ipemisor>192.0.2.1</ipemisor>
-			<contador>2</contador>
+			<ipEmisor>192.0.2.1</ipEmisor>
+			<contador>9</contador>
 		</id>
-		<protocolo>alta</protocolo>
+		<protocolo>salidaTienda</protocolo>
 		<tipo>ACK</tipo>
-	</info_mensaje>
-	<tipo_mensaje>MSI</tipo_mensaje>
-	<!--Tipo del mensaje al que responde-->
-	<id_mensaje>
-		<!--Id del mensaje al que responde-->
-		<ipemisor>192.0.2.2</ipemisor>
-		<contador>1</contador>
-	</id_mensaje>
+	</infoMensaje>
+	<tipoMensajePregunta>MSST</tipoMensajePregunta>
+	<idPregunta>
+		<ipEmisor>192.0.2.1</ipEmisor>
+		<contador>0</contador>
+	</idPregunta>
 </ack>

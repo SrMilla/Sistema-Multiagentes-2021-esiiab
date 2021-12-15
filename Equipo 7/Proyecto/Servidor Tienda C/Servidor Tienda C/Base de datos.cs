@@ -9,6 +9,7 @@ namespace Servidor_Tienda_C
     public static class Base_de_datos
     {
         public static List<Producto> productos = new List<Producto>();
+        public static List<tienda> tiendas = new List<tienda>();
         /// <summary>
         /// Sirve para añadir cantidades de un producto,si ya exite en la base de datos se incrementa su cantidad
         /// </summary>
@@ -90,5 +91,26 @@ namespace Servidor_Tienda_C
             Console.WriteLine('2');
 
         }
+        public static void añadir_tienda(string ip,string id)
+        {
+            tienda aux = new(ip, id);
+            tiendas.Add(aux);
+
+        }
+        public static void Creacion_BBDD_tienda()
+        {
+            List<string> list_IP = new List<string>()
+            {
+                "ip_1",
+                "ip_2"
+            };
+            int t = 0;
+            foreach(string i in list_IP)
+            {
+                añadir_tienda(i, t.ToString());
+                t = t + 1;
+            }
+        }
+        
     }
 }

@@ -31,11 +31,23 @@ namespace Servidor_Tienda_C.XML
             error.AppendChild(mensaje);
             this.doc.Save(".XMLFile3.xml");
             var t = this.element1.Clone();
-
+            ///AQUI DEBE ESTAR EL CUERPO DEL MENSAJE QUE ES COMO INFOMENSAJE
             var t2 = t.ChildNodes;
             mensaje.AppendChild(t2[0]);
             mensaje.AppendChild(t2[0]);
             this.doc.Save(".XMLFile2.xml");
+        }
+        public XML_error(string mensaje)
+        {
+            /*obtener_valores("error", mensaje);
+            this.tipomen = this.doc.SelectNodes("/" + "ack" + "/tipoMensajePregunta")[0].InnerText;
+
+            this.ipEmisorAck = this.doc.SelectNodes("/" + "ack" + "/idPregunta")[0]["ipEmisor"].InnerText;
+            this.contador = this.doc.SelectNodes("/" + "ack" + "/idPregunta")[0]["contador"].InnerText;
+            var t = 0;
+            Console.Write("Tipo mensaje:" + this.tipomen + "\n");
+            Console.Write("Ip Emisor Ack:" + this.ipEmisorAck + "\n");
+            Console.Write("ontador:" + this.contador + "\n");*/
         }
     }
 }

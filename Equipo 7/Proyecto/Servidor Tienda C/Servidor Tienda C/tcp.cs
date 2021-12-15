@@ -55,7 +55,7 @@ namespace Servidor_Tienda_C
                 string data = Encoding.ASCII.GetString(buffer, 0, byte_count);
                 // VGlobal.MensajesBuffer.Append(x, data));
                 VGlobal.añadirBuffer(x, data);
-                //broadcast(data, x);
+                broadcast(data, x);
                 //Console.WriteLine(cl);
                 Console.WriteLine("Se ha recibido el dato:" + data + "id:" + id);
                 
