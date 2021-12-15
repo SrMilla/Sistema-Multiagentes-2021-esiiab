@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<msi 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="msi.xsd">
+    <infoMensaje>
+        <emisor>
+            <ip>192.0.2.1</ip>
+            <id>-1</id>
+            <tipo>comprador</tipo>
+        </emisor>
+        <receptor>
+            <ip>192.0.2.2</ip>
+            <id>0</id>
+            <tipo>monitor</tipo>
+        </receptor>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>9</contador>
+        </id>
+        <protocolo>alta</protocolo>
+        <tipo>MSI</tipo>
+    </infoMensaje>
+</msi>

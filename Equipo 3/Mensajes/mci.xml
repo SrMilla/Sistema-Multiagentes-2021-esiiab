@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<mci
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="mci.xsd">
+    <infoMensaje>
+        <emisor>
+            <ip>192.0.2.1</ip>
+            <id>0</id>
+            <tipo>monitor</tipo>
+        </emisor>
+        <receptor>
+            <ip>192.0.2.2</ip>
+            <id>1</id>
+            <tipo>comprador</tipo>
+        </receptor>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>0</contador>
+        </id>
+        <protocolo>alta</protocolo>
+        <tipo>MSI</tipo>
+    </infoMensaje>
+    <listaProductos>
+        <producto>
+            <nombre>Aceite</nombre>
+            <id>1</id>
+            <cantidad>3</cantidad>
+            <precio>8.99</precio>
+        </producto>
+    </listaProductos>
+    <listaTiendas>
+        <tienda>
+            <ip>192.0.2.3</ip>
+            <id>2</id>
+        </tienda>
+        <tienda>
+            <ip>192.0.2.4</ip>
+            <id>3</id>
+        </tienda>
+    </listaTiendas>
+</mci>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitor</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript" src="C:/wamp/www/prueba.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="Titulo">
+        <h3><center>Monitor.</center></h3>
+    </div>
+
+    <br></br>
+
+    <div class="Botones"><center>
+        <form action="../asignarListas.php" method="post">
+            <input id="startButton" type="submit" value="Arrancar" name="Arrancar">
+        </form>
+        <form action="" method="post">
+            <input id="stopButton" type="submit" value="Parar" name="Parar">
+        </form>
+    </center></div>
+
+    <br></br>
+
+    <div class="Pestañas">
+    <table>
+        <tr>
+            <td>
+                <a href=mostrarMensajes.php>Mensajes</a>
+            </td>
+            <td>
+                <a href=mostrarClientes.php>Clientes</a>
+            </td>
+            <td>
+                <a href=mostrarTiendas.php>Tiendas</a>
+            </td>
+        </td></tr>
+    </table>
+    </div>
+
+</body>
+</html>

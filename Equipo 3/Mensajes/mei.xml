@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mei
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="mei.xsd">
+    <infoMensaje>
+        <emisor>
+            <ip>192.0.2.1</ip>
+            <id>5</id>
+            <tipo>comprador</tipo>
+        </emisor>
+        <receptor>
+            <ip>192.0.2.2</ip>
+            <id>0</id>
+            <tipo>monitor</tipo>
+        </receptor>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>0</contador>
+        </id>
+        <protocolo>inicioActividad</protocolo>
+        <tipo>MEI</tipo>
+    </infoMensaje>
+</mei>
