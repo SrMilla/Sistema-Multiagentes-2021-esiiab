@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<error>
+  <info_mensaje>
+    <emisor>
+      <ip>1</ip>
+      <id>1</id>
+      <tipo>1</tipo>
+    </emisor>
+    <receptor>
+      <ip>1</ip>
+      <id>1</id>
+      <tipo>
+      </tipo>
+    </receptor>
+    <id>
+      <ipEmisor>1</ipEmisor>
+    </id>
+    <protocolo>protocolo v</protocolo>
+    <tipo>error</tipo>
+  </info_mensaje>
+  <mensaje>
+    <mensajeProv>
+      <emisor>
+        <ip>1</ip>
+        <id>1</id>
+        <tipo>1</tipo>
+      </emisor>
+      <receptor>
+        <ip>1</ip>
+        <id>1</id>
+        <tipo>
+        </tipo>
+      </receptor>
+    </mensajeProv>
+  </mensaje>
+</error>

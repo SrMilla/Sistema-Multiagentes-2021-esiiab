@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<ack
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ack.xsd">
+	<infoMensaje>
+		<emisor>
+			<ip>192.0.2.1</ip>
+			<id>8</id>
+			<tipo>tienda</tipo>
+		</emisor>
+		<receptor>
+			<ip>192.0.2.2</ip>
+			<id>0</id>
+			<tipo>comprador</tipo>
+		</receptor>
+		<id>
+			<ipEmisor>192.0.2.1</ipEmisor>
+			<contador>9</contador>
+		</id>
+		<protocolo>salidaTienda</protocolo>
+		<tipo>ACK</tipo>
+	</infoMensaje>
+	<tipoMensajePregunta>MSST</tipoMensajePregunta>
+	<idPregunta>
+		<ipEmisor>192.0.2.1</ipEmisor>
+		<contador>0</contador>
+	</idPregunta>
+</ack>

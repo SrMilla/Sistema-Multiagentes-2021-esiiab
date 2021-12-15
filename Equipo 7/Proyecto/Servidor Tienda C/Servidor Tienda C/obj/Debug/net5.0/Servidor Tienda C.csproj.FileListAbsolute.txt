@@ -1,0 +1,16 @@
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.exe
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.deps.json
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.runtimeconfig.json
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.runtimeconfig.dev.json
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.dll
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\ref\Servidor Tienda C.dll
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\bin\Debug\net5.0\Servidor Tienda C.pdb
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.csprojAssemblyReference.cache
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.GeneratedMSBuildEditorConfig.editorconfig
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.AssemblyInfoInputs.cache
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.AssemblyInfo.cs
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.csproj.CoreCompileInputs.cache
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.dll
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\ref\Servidor Tienda C.dll
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.pdb
+D:\Drive\Universidad\2021_22\Multi\Sistema-Multiagentes-2021-esiiab\Equipo 7\Proyecto\Servidor Tienda C\Servidor Tienda C\obj\Debug\net5.0\Servidor Tienda C.genruntimeconfig.cache
