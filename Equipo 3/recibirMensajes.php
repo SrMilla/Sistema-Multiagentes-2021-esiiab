@@ -1,37 +1,37 @@
 <?php
-//Inicializamos variables.
+// Inicializamos variables.
 $contT = 0;
 $contC = 0;
 $cont  = 0;
 $n_mensajes=0;
 
-//TOMAR MENSAJE CON EL POST.
+// Tomamos el mensaje con el POST.
 $xml = simplexml_load_string($_POST['xml']);
 
-//Obtenemos los datos que hay que guardar de los mensajes: IP emisor, contador, ID emisor, tipo emisor, IP receptor, ID recpetor, tipo receptor, protocolo, tipo de mensaje, detalles.  
-//Obtenemos los datos del emisor (los índices indican dónde aparece cada atributo dentro del tipo en el XSD).
+// Obtenemos los datos que hay que guardar de los mensajes: IP emisor, contador, ID emisor, tipo emisor, IP receptor, ID recpetor, tipo receptor, protocolo, tipo de mensaje, detalles.  
+// Obtenemos los datos del emisor (los índices indican dónde aparece cada atributo dentro del tipo en el XSD).
 $ip_emisor = $xml -> infoMensaje -> emisor -> ip;
 $id_emisor = $xml -> infoMensaje -> emisor -> id;
 $tipo_emisor = $xml -> infoMensaje -> emisor -> tipo;
 
-//Obtenemos los datos del receptor (los índices indican dónde aparece cada atributo dentro del tipo en el XSD).
+// Obtenemos los datos del receptor (los índices indican dónde aparece cada atributo dentro del tipo en el XSD).
 $ip_receptor = $xml -> infoMensaje -> receptor -> ip;
 $id_receptor = $xml -> infoMensaje -> receptor -> id;
 $tipo_receptor = $xml -> infoMensaje -> receptor -> tipo;
 
-//Obtenemos contador.
+// Obtenemos contador.
 $contador = $xml -> infoMensaje -> id -> contador;
 
-//Obtenemos protocolo.
+// Obtenemos protocolo.
 $protocolo = $xml -> infoMensaje -> protocolo;
 
-//Obtenemos tipo de mensaje.
+// Obtenemos tipo de mensaje.
 $tipomsn = $xml -> infoMensaje -> tipo;
 
-//TODO: FALTA DETALLES.
+// Obtenemos el resto del mensaje.
 $detalles = "Detalles";
 
-//Si es un MSI (mensaje de alta), vemos si es tienda o cliente y aumentamos el número de los mismos.
+// Si es un MSI (mensaje de alta), vemos si es tienda o cliente y aumentamos el número de sus contadores.
 if($tipomsn=="MSI") {
     // Asigno ID cliente
     $cont = $cont + 1;
@@ -65,14 +65,16 @@ $ack -> tipoMensajePregunta = $tipomsn;
 $ack -> idPregunta -> ipEmisor = $ip_emisor;
 $ack -> idPregunta -> contador = $contador;
 
-//Iniciamos la conexión con la BBDD.
+// Iniciamos la conexión con la BBDD.
 require_once 'conectarBBDD.php';
 $link = conexion();
 error_log($id_emisor);
 error_log($contador);
 $sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$ip_emisor',$contador,$id_emisor,'$tipo_emisor','$ip_receptor',$id_receptor,'$tipo_receptor','$protocolo','$tipomsn','$detalles');"; 
+
+// En caso de que se haya dado algún erro al insertar los datos, lo mostramos por pantalla.
 if (!mysqli_query($link, $sql)) {
-    error_log('ERROR AL INSERTAR');//----------TODO: error al insertar info en bbdd
+    error_log('ERROR AL INSERTAR');
 }
 
 // Si tenemos un mensaje MSI mandamos un ACK como respuesta.
@@ -82,11 +84,14 @@ if($tipomsn=="MSI") {
 
 // Mensaje MEI
 if($tipomsn=="MEI") {
+    // Calculamos el número de MCIs que hay.
     $sql = "SELECT COUNT(*) FROM MCIs";
     $resultado = mysqli_query($link, $sql);
     $existe_mci = mysqli_fetch_array($resultado)[0];
     error_log('\n\n'.$existe_mci);
+    // En caso de que ya tengamos MCIs, mandamos un MCI al emisor como respuesta.
     if($existe_mci > 0) {
+        // Tomamos el MCI que corresponde al emisor.
         $sentencia = "SELECT mci FROM MCIs WHERE id=$id_emisor;";
         $resultado = mysqli_query($link, $sentencia);
         //var_dump($resultado);
@@ -95,6 +100,7 @@ if($tipomsn=="MEI") {
         error_log($mci);
         echo $mci;
     }
+    // En caso de que no tengamos MCIs, mandamos un ACK.
     else {
         echo $ack-> asXML();
     }

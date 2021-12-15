@@ -1,6 +1,4 @@
 <?php
-    
-    //require_once('mensajes.php');
 
     function httpRequest($url, $data) {
         $ch = curl_init();
@@ -23,20 +21,11 @@
         return $return;
     }
 
-    //The data you want to send via POST
+    // En XML ponemos el mensaje que queremos mandar y en URL la dirección del servidor que recibirá el mensaje.
     $xml = file_get_contents('Mensajes/mei.xml');
     $url = "localhost/recibirMensajes.php";
-
-
-    //$xml = generateMSIP(['Comprador','1','192.168.0.1','80'],['Tienda','1','192.168.0.2','80'],[0=>['3','Pan','5']]);
-    //$url = "localhost/server_test.php";
-
-    //echo('PreRequest');
 
     $result = simplexml_load_string(httpRequest($url, $xml));
     
     print_r($result);
-
-    //echo 'El producto 0 es ', $result->lista_productos->producto[0]->nombre_producto, '<br>';
-    //echo 'El producto 1 es ', $result->lista_productos->producto[1]->nombre_producto;
 ?>

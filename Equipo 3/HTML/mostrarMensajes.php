@@ -1,18 +1,21 @@
 <?php
 
+// Primero conectamos con la BBDD.
 require_once '../conectarBBDD.php';
 $link = conexion();
 
+// Comprobamos que hemos conectado con la BBDD correctamente.
 if(!$link)
 {
 	die ("No se ha podido encontrar porque: ".mysql_error());
 }
 
-
+// Sacamos el número de mensajes.
 $sentencia = "SELECT COUNT(*) FROM Mensajes;";
 $resultado = mysqli_query($link, $sentencia);
-$n_mensajes = mysqli_fetch_array($resultado)[0]; // Numero de tiendas
+$n_mensajes = mysqli_fetch_array($resultado)[0]; 
 
+// Imprimimos el número de mensajes.
 echo "---------------------------------------------------------------------------------------------------------";
 echo "<br>";
 echo "<br>";
@@ -21,10 +24,12 @@ echo "<br>";
 echo "<br>";
 echo "---------------------------------------------------------------------------------------------------------";
 
+// Seleccionamos todos los mensajes.
 $sentencia = "SELECT * FROM Mensajes;";
 $resultado = mysqli_query($link, $sentencia);
 $mensajes = mysqli_fetch_all($resultado);
 
+// Por cada uno de los mensajes, mostramos su información.
 foreach ($mensajes as $un_mensaje) {
     echo "<br>";
     echo "<br>";
@@ -48,6 +53,4 @@ foreach ($mensajes as $un_mensaje) {
 
 // Cerramos la conexion de la BBDD
 mysqli_close($link);
-
-
 ?>
