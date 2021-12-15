@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="tiposBase.xsd" />
+
+    <!-- Mensaje de Compra de Productos -->
+    <xs:element name="mcp">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="infoMensaje" type="infoMensaje" />
+                <xs:element name="listaProductos" type="listaProductos" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

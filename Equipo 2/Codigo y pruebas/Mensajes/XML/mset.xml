@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<mset
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="../mset.xsd">
+    <infoMensaje>
+        <emisor>
+            <ip>192.0.2.1</ip>
+            <id>5</id>
+            <tipo>comprador</tipo>
+        </emisor>
+        <receptor>
+            <ip>192.0.2.2</ip>
+            <id>3</id>
+            <tipo>tienda</tipo>
+        </receptor>
+        <id>
+            <ipEmisor>192.0.2.1</ipEmisor>
+            <contador>0</contador>
+        </id>
+        <protocolo>entradaTienda</protocolo>
+        <tipo>MSET</tipo>
+    </infoMensaje>
+    <hora>9</hora>
+    <minuto>59</minuto>
+</mset>
