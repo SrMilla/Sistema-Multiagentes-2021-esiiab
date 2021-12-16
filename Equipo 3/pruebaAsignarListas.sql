@@ -48,6 +48,7 @@ CREATE TABLE Tiendas (
     id INT UNSIGNED NOT NULL,
     nombre VARCHAR(50),
     ip VARCHAR(15) NOT NULL,
+    active int not null,
     PRIMARY KEY (id)
 );
 
@@ -58,6 +59,7 @@ CREATE TABLE Compradores (
     ip VARCHAR(15) NOT NULL,
     tienda1 INT UNSIGNED,
     tienda2 INT UNSIGNED,
+    active int not null,
     PRIMARY KEY (id)
 );
 
@@ -91,19 +93,21 @@ CREATE TABLE MCIs (
 CREATE TABLE Variables_Globales (
     NumeroFila INT,
     n_mensajes INT UNSIGNED,
+    contT INT UNSIGNED,
+    contC INT UNSIGNED,
     primary key (NumeroFila),
     check       (NumeroFila = 1)
 );
 
-INSERT INTO Tiendas VALUES (2,'t1','192.0.2.2');# 1 row affected.
+INSERT INTO Tiendas VALUES (2,'t1','192.0.2.2',1);# 1 row affected.
 
-INSERT INTO Tiendas VALUES (5,'t2','192.0.2.5');# 1 row affected.
+INSERT INTO Tiendas VALUES (5,'t2','192.0.2.5',1);# 1 row affected.
 
-INSERT INTO Compradores(id, nombre, ip) VALUES (1,'c1','192.0.2.1');# 1 row affected.
+INSERT INTO Compradores(id, nombre, ip, active) VALUES (1,'c1','192.0.2.1',1);# 1 row affected.
 
-INSERT INTO Compradores(id, nombre, ip) VALUES (3,'c2','192.0.2.3');# 1 row affected.
+INSERT INTO Compradores(id, nombre, ip, active) VALUES (3,'c2','192.0.2.3', 1);# 1 row affected.
 
-INSERT INTO Compradores(id, nombre, ip) VALUES (4,'c3','192.0.2.4');# 1 row affected.
+INSERT INTO Compradores(id, nombre, ip, active) VALUES (4,'c3','192.0.2.4', 1);# 1 row affected.
 
 INSERT INTO Mensajes VALUES ('192.0.2.1',0,1,'comprador','192.0.2.10',0,'monitor','alta','MSI','');# 1 row affected.
 
@@ -114,4 +118,4 @@ INSERT INTO Mensajes VALUES ('192.0.2.3',0,3,'comprador','192.0.2.10',0,'monitor
 INSERT INTO Mensajes VALUES ('192.0.2.4',0,4,'comprador','192.0.2.10',0,'monitor','alta','MSI','');# 1 row affected.
 
 INSERT INTO Mensajes VALUES ('192.0.2.5',0,5,'tienda','192.0.2.10',0,'monitor','alta','MSI','');# 1 row affected.
-INSERT INTO Variables_Globales VALUES (1,0);
+INSERT INTO Variables_Globales VALUES (1,0,0,0);

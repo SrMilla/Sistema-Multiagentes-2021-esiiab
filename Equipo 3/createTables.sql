@@ -28,6 +28,7 @@ CREATE TABLE Tiendas (
     id INT UNSIGNED NOT NULL,
     nombre VARCHAR(50),
     ip VARCHAR(15) NOT NULL,
+    active int not null,
     PRIMARY KEY (id)
 );
 
@@ -37,6 +38,7 @@ CREATE TABLE Compradores (
     ip VARCHAR(15) NOT NULL,
     tienda1 INT UNSIGNED,
     tienda2 INT UNSIGNED,
+    active int not null,
     PRIMARY KEY (id)
 );
 

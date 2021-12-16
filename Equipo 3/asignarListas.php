@@ -59,7 +59,7 @@ for ($i = 1; $i <= $n_agentes; $i++) {
             }
         }
         //----------TODO: implementar función generar_MCI
-        $mci = generar_MCI($lista_p, $lista_t, $m, $n_mensajes);
+        $mci = generar_MCI($lista_p, $lista_t, $m, $n_mensajes, $link);
         $n_mensajes++;
         $sentencia = "INSERT INTO MCIs VALUES (".$i.",'$mci');";
         if (!mysqli_query($link, $sentencia)) {
@@ -77,7 +77,7 @@ for ($i = 1; $i <= $n_agentes; $i++) {
             }
         }
         //----------TODO: implementar función generar_MCI
-        $mci = generar_MCI($lista_p, [], $m, $n_mensajes);
+        $mci = generar_MCI($lista_p, [], $m, $n_mensajes, $link);
         $n_mensajes++;
         $sentencia = "INSERT INTO MCIs VALUES (".$i.",'$mci');";
         if (!mysqli_query($link, $sentencia)) {
@@ -163,8 +163,8 @@ function generar_listas_tiendas($n_tiendas, $n_comp, $link) {
     }
     return $listas_t;
 }
-function generar_MCI($lista_p, $lista_t, $m, $n_mensajes){
-    $xml = simplexml_load_file('mci.xml');
+function generar_MCI($lista_p, $lista_t, $m, $n_mensajes, $link){
+    $xml = simplexml_load_file('Mensajes/mci.xml');
     $xml -> infoMensaje -> emisor -> ip = $m['ipR'];
     $xml -> infoMensaje -> emisor -> id = $m['idR'];
     $xml -> infoMensaje -> emisor -> tipo = $m['tipoR'];
@@ -185,6 +185,11 @@ function generar_MCI($lista_p, $lista_t, $m, $n_mensajes){
         $xml -> listaTiendas -> tienda[$i] -> ip = $lista_t[$i][1];
         $xml -> listaTiendas -> tienda[$i] -> id = $lista_t[$i][0];
     }
+    //$sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$m['ipR']',$n_mensajes,$m['idR'],'$m['tipoR']','$m['ipE']',$m['idE'],'$m['tipoE']','alta','MSI','DETALLES');"; 
+    // En caso de que se haya dado algún erro al insertar los datos, lo mostramos por pantalla.
+    //if (!mysqli_query($link, $sql)) {
+    //    error_log('ERROR AL INSERTAR');
+    //}
     return $xml->asXML();
 }
 ?>
