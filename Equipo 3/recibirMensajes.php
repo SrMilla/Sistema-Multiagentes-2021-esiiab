@@ -102,6 +102,16 @@ if($tipomsn=="MSI" or $tipomsn=="MFO" or $tipomsn=="MEI"){
                     error_log('ERROR AL UPDATEAR');
                 }
             }
+            echo $ack-> asXML();
+            $sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$ip_receptor',$n_mensajes,$id_receptor,'$tipo_receptor','$ip_emisor',$id_emisor,'$tipo_emisor','$protocolo','ACK','$detalles');"; 
+            // En caso de que se haya dado algún erro al insertar los datos, lo mostramos por pantalla.
+            if (!mysqli_query($link, $sql)) {
+                error_log('ERROR AL INSERTAR');
+            }
+            // Updateamos el número de mensajes
+            $sentencia = "INSERT INTO Variables_Globales(n_mensajes) VALUES ($n_mensajes+1);";
+            mysqli_query($link, $sentencia);
+            break;
         case 'MSI':
             echo $ack-> asXML();
             $sql="INSERT INTO Mensajes(ipE,cont,idE,tipoE,ipR,idR,tipoR,protocolo,tipoM,detalles) VALUES ('$ip_receptor',$n_mensajes,$id_receptor,'$tipo_receptor','$ip_emisor',$id_emisor,'$tipo_emisor','$protocolo','ACK','$detalles');"; 

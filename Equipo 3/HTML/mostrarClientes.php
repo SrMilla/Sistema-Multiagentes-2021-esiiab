@@ -13,13 +13,19 @@ if(!$link)
 // Sacamos el número de compradores.
 $sentencia = "SELECT COUNT(*) FROM Compradores;";
 $resultado = mysqli_query($link, $sentencia);
-$n_compradores = mysqli_fetch_array($resultado)[0]; // Numero de tiendas
+$n_compradores = mysqli_fetch_array($resultado)[0];
 
+// Sacamos el número de compradores activos.
+$sentencia = "SELECT SUM(active) FROM Compradores;";
+$resultado = mysqli_query($link, $sentencia);
+$n_comp_activos = mysqli_fetch_array($resultado)[0];
 // Imprimimos el número de compradores.
 echo "---------------------------------------------------------------------------------------------------------";
 echo "<br>";
 echo "<br>";
 echo "TOTAL COMPRADORES: "."<b>".$n_compradores."</b>";
+echo "<br>";
+echo "COMPRADORES ACTIVOS: "."<b>".$n_comp_activos."</b>";
 echo "<br>";
 echo "<br>";
 echo "---------------------------------------------------------------------------------------------------------";

@@ -50,20 +50,20 @@ for ($i = 1; $i <= $n_agentes; $i++) {
         $lista_t = $listas_t[$comp];
         $sentencia = "UPDATE Compradores SET tienda1=".$lista_t[0][0].", tienda2=".$lista_t[1][0]." WHERE id = ".$i.";.";
         if (!mysqli_query($link, $sentencia)) {
-            //----------TODO: error al insertar info en bbdd
+            error_log("asignar listas linea 53");
         }
         for ($j = 0; $j < count($lista_p); $j++) {
             $sentencia = "INSERT INTO Prod_Comprador VALUES (".$lista_p[$j][0].",".$i.",".$lista_p[$j][1].");";
             if (!mysqli_query($link, $sentencia)) {
-                //----------TODO: error al insertar info en bbdd
+                error_log("asignar listas linea 58");
             }
         }
-        //----------TODO: implementar función generar_MCI
+        
         $mci = generar_MCI($lista_p, $lista_t, $m, $n_mensajes, $link);
         $n_mensajes++;
         $sentencia = "INSERT INTO MCIs VALUES (".$i.",'$mci');";
         if (!mysqli_query($link, $sentencia)) {
-            //----------TODO: error al insertar info en bbdd
+            error_log("asignar listas linea 66");
         }
         $comp++;
     } else {
